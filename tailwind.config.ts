@@ -20,6 +20,19 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+
+      gap: {
+        '14': '14px',
+      },
+      spacing: {
+        '18': '18px',
+      },
+      width: {
+        '24': '24px',
+      },
+      height: {
+        '24': '24px',
+      },
     },
   },
   plugins: [],
