@@ -4,16 +4,16 @@ import { BrowserRouter } from 'react-router-dom';
 
 import App from './components/App/App';
 import '../styles/tailwind.css';
-import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
-import store, { persistor } from './redux/store';
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <Provider store={store}>
-    <PersistGate persistor={persistor}>
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
       <BrowserRouter basename="/ToDoshka_front">
         <App />
       </BrowserRouter>
-    </PersistGate>
-  </Provider>
-);
+    </React.StrictMode>
+  );
+} else {
+  console.error('Failed to find the root element');
+}
