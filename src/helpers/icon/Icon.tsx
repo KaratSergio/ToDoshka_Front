@@ -1,5 +1,6 @@
 import React from 'react';
 import { IconProps } from './types';
+import sprite from '../../assets/svg/sprite.svg';
 
 const Icon: React.FC<IconProps> = ({
   id,
@@ -12,7 +13,7 @@ const Icon: React.FC<IconProps> = ({
     <svg
       className={`inline-block align-middle w-${width} h-${height} fill-${color} stroke-${strokeColor}`}
     >
-      <use xlinkHref={`../../assets/svg/sprite.svg#${id}`} />
+      <use href={`${sprite}#${id}`} />
     </svg>
   );
 };
