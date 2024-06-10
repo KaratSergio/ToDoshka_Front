@@ -6,12 +6,12 @@ const Icon: React.FC<IconProps> = ({
   id,
   width = 24,
   height = 24,
-  color = 'transparent',
-  strokeColor = 'text-blue-500',
+  color = 'fill-transparent',
+  strokeColor = 'stroke-black',
 }) => {
   return (
     <svg
-      className={`inline-block align-middle w-${width} h-${height} fill-${color} stroke-${strokeColor}`}
+      className={`inline-block align-middle w-${width} h-${height} ${color} ${strokeColor}`}
     >
       <use href={`${sprite}#${id}`} />
     </svg>

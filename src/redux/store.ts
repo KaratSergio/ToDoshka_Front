@@ -1,5 +1,7 @@
-import { configureStore } from "@reduxjs/toolkit";
-import storage from "redux-persist/lib/storage";
+import { configureStore } from '@reduxjs/toolkit';
+import storage from 'redux-persist/lib/storage';
+import { useDispatch, useSelector, TypedUseSelectorHook } from 'react-redux';
+
 import {
   persistStore,
   persistReducer,
@@ -9,23 +11,31 @@ import {
   PERSIST,
   PURGE,
   REGISTER,
-} from "redux-persist";
-import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
-import { authReducer } from "./Auth/authSlice";
+} from 'redux-persist';
+
+import { authReducer } from './auth/authSlice';
+import { boardReducer } from './boards/boardSlice';
+import { columnReducer } from './columns/columnSlice';
+import { taskReducer } from './tasks/taskSlice';
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
-  whitelist: ["token"],
+  whitelist: ['token'],
 };
 
-const persistedReducer = persistReducer(persistConfig, authReducer);
+const persistedAuthReducer = persistReducer(persistConfig, authReducer);
+const persistedBoardReducer = persistReducer(persistConfig, boardReducer);
+const persistedColumnReducer = persistReducer(persistConfig, columnReducer);
+const persistedTaskReducer = persistReducer(persistConfig, taskReducer);
 
 const store = configureStore({
   reducer: {
-    auth: persistedReducer,
+    auth: persistedAuthReducer,
+    boards: persistedBoardReducer,
+    columns: persistedColumnReducer,
+    tasks: persistedTaskReducer,
   },
-
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -43,4 +53,3 @@ export type AppDispatch = typeof store.dispatch;
 
 export const useAppDispatch = () => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
-
