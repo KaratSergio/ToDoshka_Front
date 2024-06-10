@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../../helpers/icon/Icon';
+import Icon from '../../helpers/Icon/Icon';
 
 const HomePage = () => {
   return (
@@ -8,8 +8,8 @@ const HomePage = () => {
       {/* тест імпорт іконка */}
       <Icon
         id="icon-icon-plus"
-        strokeColor="stroke-red-500"
-        color="fill-white"
+        strokeColor="stroke-blue-500"
+        color="fill-black"
       />
       <p>Board default / New board</p>
     </div>

@@ -1,4 +1,4 @@
-import Icon from '../../helpers/icon/Icon';
+import Icon from '../../helpers/Icon/Icon';
 
 const Header = () => {
   return (
