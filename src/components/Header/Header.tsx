@@ -2,16 +2,16 @@ import Icon from '../../helpers/icon/Icon';
 
 const Header = () => {
   return (
-    <header className="flex w-full px-20 py-14 bg-slate-50  md:px-32 py-18 xl: py-18 ">
+    <header className="flex w-full px-5 py-3.5 bg-slate-50  md:px-8 py-18 xl:px-6 ">
       <button
         type="button"
-        className="block border-2 bg-transparent w-14 h-14  xl:hidden"
+        className="flex items-center stroke-black border-0 bg-transparent w-24 h-24 p-0  xl:hidden"
         aria-label="navigation"
       >
         <Icon id="menu" />
       </button>
       {/* {isOpen && <Navigation close={close} />} */}
-      <div className="flex gap-3.5 items-center ml-auto">
+      <div className="flex gap-14 items-center ml-auto">
         <p>Theme</p>
         <p>UserInfo</p>
         {/* <Theme />
