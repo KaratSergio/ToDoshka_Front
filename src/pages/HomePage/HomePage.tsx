@@ -1,17 +1,20 @@
 import Icon from '../../helpers/icon/Icon';
 import React from 'react';
+import { Outlet } from 'react-router-dom';
+import Header from '../../components/Header/Header';
+import SideBar from '../../components/Sidebar/Sidebar';
 
 const HomePage = () => {
   return (
-    <div>
-      <h3>Home page</h3>
-      {/* тест імпорт іконка */}
-      <Icon
-        id="icon-icon-plus"
-        strokeColor="stroke-blue-500"
-        color="fill-black"
-      />
-      <p>Board default / New board</p>
+    <div className="xl:flex flex-row w-1440 my-0 mx-auto">
+      <div className="hidden  xl:flex">
+        <SideBar />
+      </div>
+      <div className="w-full">
+        <Header />
+
+        <Outlet />
+      </div>
     </div>
   );
 };

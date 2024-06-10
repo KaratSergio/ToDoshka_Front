@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 
-import Layout from '../Layout/Layout';
 import SharedLayout from '../SharedLayout/SharedLayout';
 
 import HomePage from '../../pages/HomePage/HomePage';
@@ -22,8 +21,7 @@ function App() {
         <Route index element={<WelcomePage />} />
         <Route path="auth/:id" element={<AuthPage />} />
 
-        <Route path="/home" element={<Layout />}>
-          <Route index element={<HomePage />} />
+        <Route path="/home" element={<HomePage />}>
           <Route path=":boardName" element={<ScreensPage />} />
         </Route>
         <Route path="*" element={<ErrorPage />} />
