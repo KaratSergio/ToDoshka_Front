@@ -7,8 +7,6 @@ import '../styles/tailwind.css';
 import store from './redux/store';
 import { Provider } from 'react-redux';
 
-
-
 const rootElement = document.getElementById('root');
 if (rootElement) {
   ReactDOM.createRoot(rootElement).render(
@@ -18,7 +16,6 @@ if (rootElement) {
           <App />
         </BrowserRouter>
       </Provider>
-
     </React.StrictMode>
   );
 } else {
