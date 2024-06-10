@@ -1,4 +1,4 @@
-import Icon from '../../helpers/Icon/Icon';
+import Icon from '../../helpers/icon/Icon';
 import React from 'react';
 
 const HomePage = () => {
