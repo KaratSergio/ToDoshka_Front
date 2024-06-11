@@ -13,7 +13,7 @@ import { initialColumnState } from './initialState';
 import { handlePending, handleRejected } from '../stateHelpers';
 
 const columnSlice = createSlice({
-  name: 'auth',
+  name: 'columns',
   initialState: initialColumnState,
   reducers: {},
   extraReducers: (builder) => {
