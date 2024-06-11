@@ -29,6 +29,9 @@ const config: Config = {
       },
       width: {
         '24': '24px',
+        '260': '260px',
+
+        '1440': '1440px',
       },
       height: {
         '24': '24px',
