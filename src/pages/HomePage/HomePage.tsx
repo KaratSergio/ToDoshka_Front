@@ -1,8 +1,8 @@
-import Icon from '../../helpers/icon/Icon';
-import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import SideBar from '../../components/Sidebar/Sidebar';
+
+import Icon from '@src/helpers/icon/Icon';
+import Header from '@components/Header/Header';
+import SideBar from '@components/Sidebar/Sidebar';
 
 const HomePage = () => {
   return (
@@ -10,10 +10,10 @@ const HomePage = () => {
       <div className="hidden  xl:flex">
         <SideBar />
       </div>
+      <Icon id="icon-plus" />
       <div className="w-full">
         <Header />
-
-        <Outlet />
+        <Outlet />I I
       </div>
     </div>
   );
