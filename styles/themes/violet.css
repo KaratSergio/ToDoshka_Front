@@ -1,0 +1,91 @@
+html[data-theme='violet'] {
+  --bg-header: #ecedfd;
+  --color-scroll-tracker-g: #ffffff;
+  --color-scroll-g: #b8bcfd;
+  --color-scroll-tracker-v: #ffffff;
+  --color-scroll-v: #b8bcfd;
+  --color-font: #161616;
+  --bg-color-body: #ecedfd;
+  --bg-color: #ffffff;
+  --bg-theme: #fcfcfc;
+  --color-theme: #161616;
+  --color-theme-active: #5255bc;
+  --color-theme-shadow: #ecedfd;
+  --active: #5255bc;
+  --color: #161616;
+  --color-shadow: rgba(22, 22, 22, 0.8);
+  --color-hr: rgba(22, 22, 22, 0.1);
+  --color-radioDescr: rgba(22, 22, 22, 0.5);
+  --color-board: rgba(22, 22, 22, 0.7);
+  --color-icon-grey: rgba(255, 255, 255, 0.5);
+
+  /* Scroll SideBar */
+  --scroll-track: rgba(236, 237, 253, 0.6);
+  --scroll-thumb: rgba(22, 22, 22, 0.5);
+
+  /* SideBar */
+  --bg-button-plus: #b8bcfd;
+  --bg-sidebar: #5255bc;
+  --sb-icon-stroke: #fff;
+  --bg-help: rgba(236, 237, 253, 0.4);
+  --bg-image-logo: url(assets/img/logo/logo-violet.png);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-fonts: #fff;
+  --color-link: #5255bc;
+  --logout-icon: #fff;
+  --color-item: rgba(255, 255, 255, 0.5);
+  --modal-border: #fcfcfc;
+  --bg-card: rgba(255, 255, 255, 0.5);
+  --border-cart: #fff;
+
+  /* Pop up */
+  --bg-color: #fcfcfc;
+  --color: #161616;
+  --color-placeholder: rgba(22, 22, 22, 0.5);
+  --bg-input: rgba(22, 22, 22, 0.8);
+  --bg-button: #7b7ede;
+  --bg-button-active: #5255bc;
+  --button-color-square: #fff;
+  --bg-button-plus: #b8bcfd;
+  --button-plus: #161616;
+  --button-color: #fff;
+
+  /* Icon Avatar Default */
+
+  --background-image: url(assets/img/userAvatar/user-violet.png);
+
+  /* Calendar */
+  --calendar-background-color: #fff;
+  --calendar-text-color: #161616;
+  --calendar-input: #5255bc;
+  --calendar-month: rgba(22, 22, 22, 0.5);
+  --calendar-day: #fff;
+  --calendar-navigation: #5255bc;
+  --calendar-day: #161616;
+  --calendar-day-hover: #5255bc;
+  --calendar-active-day: #fcfcfc;
+  --calendar-day-selected: #161616;
+  --calendar-day-selected-background: #5255bc;
+
+  /*RadioButtons Filter*/
+  --datepicker-grey: rgba(22, 22, 22, 0.5);
+  --datepicker-grey-lable: rgba(22, 22, 22, 0.3);
+  --datepicker-checked: #ffffff;
+  --datepicker-focused: #161616;
+
+  /*BTN AnotherColumn*/
+  --bg-another-column: #fcfcfc;
+  --btn-color-anothet-column: #161616;
+  --btn-icon-bg-anothet-column: #5255bc;
+  --btn-icon-another-column: #fcfcfc;
+  --hover-another-column: #7b7ede;
+  --hover-title-another-column: #fff;
+
+  --btn-add: #5255bc;
+  --back-another-column: #fff;
+  --color-border-card: rgba(22, 22, 22, 0.1);
+  --icon-stroke-card: #161616;
+  --colol-span: #5255bc;
+  --color-btn-plus: #ffffff;
+  --color-bg-btn: #7b7ede;
+}
