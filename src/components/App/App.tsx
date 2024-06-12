@@ -1,46 +1,44 @@
 import { Route, Routes } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
 import SharedLayout from '../SharedLayout/SharedLayout';
-
-import HomePage from '../../pages/HomePage/HomePage';
-import AuthPage from '../../pages/AuthPage/AuthPage';
-import WelcomePage from '../../pages/WelcomePage/WelcomePage';
-import ErrorPage from '../../pages/ErrorPage/ErrorPage';
-import ScreensPage from '../../pages/ScreensPage/ScreensPage';
-
-// interface IRouteObject {
-//   path?: string;
-//   id?: string;
-//   element: React.ReactNode;
-// }
+// pages*
+import HomePage from '@pages/HomePage/HomePage';
+import AuthPage from '@pages/AuthPage/AuthPage';
+import WelcomePage from '@pages/WelcomePage/WelcomePage';
+import ErrorPage from '@pages/ErrorPage/ErrorPage';
+import ScreensPage from '@pages/ScreensPage/ScreensPage';
+// modal**
+import Modal from '../Custom/CustomModal/Modal';
+import ModalContent from '../Custom/CustomModal/ModalContent';
+import { closeModal } from '@redux/modal/modalSlice';
+import { selectModalIsVisible } from '@redux/modal/selectors';
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<SharedLayout />}>
-        <Route index element={<WelcomePage />} />
-        <Route path="auth/:id" element={<AuthPage />} />
+  const isVisible = useSelector(selectModalIsVisible);
+  const dispatch = useDispatch();
 
-        <Route path="/home" element={<HomePage />}>
-          <Route path=":boardName" element={<ScreensPage />} />
+  const handleClose = () => {
+    dispatch(closeModal());
+  };
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<WelcomePage />} />
+          <Route path="auth/:id" element={<AuthPage />} />
+          <Route path="/home" element={<HomePage />}>
+            <Route path=":boardName" element={<ScreensPage />} />
+          </Route>
+          <Route path="*" element={<ErrorPage />} />
         </Route>
-        <Route path="*" element={<ErrorPage />} />
-      </Route>
-      {/* <Route
-        path="*"
-        element={
-          <Layout>
-            <Routes>
-              <Route path="/first" element={<HomePage />} />
-              <Route path="/second" element={<SecondPage />}>
-                <Route path=":half" element={<HalfPage />} />
-              </Route>
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
-          </Layout>
-        }
-      /> */}
-    </Routes>
+      </Routes>
+
+      <Modal isVisible={isVisible} onClose={handleClose}>
+        <ModalContent />
+      </Modal>
+    </>
   );
 }
 

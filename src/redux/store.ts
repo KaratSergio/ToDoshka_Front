@@ -17,11 +17,12 @@ import { authReducer } from './auth/authSlice';
 import { boardReducer } from './boards/boardSlice';
 import { columnReducer } from './columns/columnSlice';
 import { taskReducer } from './tasks/taskSlice';
+import { modalReducer } from './modal/modalSlice';
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['token'],
+  whitelist: ['auth'],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
@@ -35,6 +36,7 @@ const store = configureStore({
     boards: persistedBoardReducer,
     columns: persistedColumnReducer,
     tasks: persistedTaskReducer,
+    modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

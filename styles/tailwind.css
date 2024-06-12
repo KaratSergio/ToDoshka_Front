@@ -19,7 +19,7 @@
   font-weight: 400;
   src:
     local('PoppinsRegular'),
-    url(./fonts/Poppins-Regular.ttf) format('truetype');
+    url(../src/fonts/Poppins-Regular.ttf) format('truetype');
 }
 
 @font-face {
@@ -28,7 +28,7 @@
   font-weight: 500;
   src:
     local('PoppinsMedium'),
-    url(./fonts/Poppins-Medium.ttf) format('truetype');
+    url(../src/fonts/Poppins-Medium.ttf) format('truetype');
 }
 
 @font-face {
@@ -37,7 +37,7 @@
   font-weight: 600;
   src:
     local('PoppinsSemibold'),
-    url(./fonts/Poppins-SemiBold.ttf) format('truetype');
+    url(../src/fonts/Poppins-SemiBold.ttf) format('truetype');
 }
 
 /* Custom colors */

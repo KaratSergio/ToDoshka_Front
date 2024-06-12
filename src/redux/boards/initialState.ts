@@ -1,11 +1,8 @@
-interface IBoardState {
-  isLoading: boolean;
-  isLogin: boolean;
-  error: string | null;
-}
+import { IBoardState, Board } from './types';
 
 export const initialBoardState: IBoardState = {
+  boards: [],
+  selectedBoard: {} as Board,
   isLoading: false,
-  isLogin: false,
   error: null,
 };

@@ -9,6 +9,8 @@ export default defineConfig({
       '@src': '/src',
       '@components': '/src/components',
       '@pages': '/src/pages',
+      '@redux': '/src/redux',
+      '@helpers': '/src/helpers',
       '@assets': '/src/assets',
     },
   },
