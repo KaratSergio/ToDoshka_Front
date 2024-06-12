@@ -1,9 +1,4 @@
-import {
-  createSlice,
-  PayloadAction,
-  isAnyOf,
-  CaseReducer,
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, isAnyOf, CaseReducer } from '@reduxjs/toolkit';
 
 import {
   getBoardsThunk,
@@ -15,21 +10,21 @@ import {
 
 import { Board, IBoardState } from './types';
 import { initialBoardState } from './initialState';
-import { handlePending, handleRejected } from '../stateHelpers';
+import { handlePending, handleRejected } from '../helpers/stateHelpers';
 
-const getBoardsFulfilledHandler: CaseReducer<
-  IBoardState,
-  PayloadAction<Board[]>
-> = (state, action) => {
+const getBoardsFulfilledHandler: CaseReducer<IBoardState, PayloadAction<Board[]>> = (
+  state,
+  action
+) => {
   state.error = null;
   state.isLoading = false;
   state.boards = action.payload;
 };
 
-const getBoardByIdFulfilledHandler: CaseReducer<
-  IBoardState,
-  PayloadAction<Board>
-> = (state, action) => {
+const getBoardByIdFulfilledHandler: CaseReducer<IBoardState, PayloadAction<Board>> = (
+  state,
+  action
+) => {
   state.error = null;
   state.isLoading = false;
   if (
@@ -44,10 +39,10 @@ const getBoardByIdFulfilledHandler: CaseReducer<
   }
 };
 
-const editBoardThunkFulfilledHandler: CaseReducer<
-  IBoardState,
-  PayloadAction<Board>
-> = (state, action) => {
+const editBoardThunkFulfilledHandler: CaseReducer<IBoardState, PayloadAction<Board>> = (
+  state,
+  action
+) => {
   state.isLoading = false;
   state.selectedBoard = action.payload;
   state.boards = state.boards.map((board) =>
@@ -55,10 +50,10 @@ const editBoardThunkFulfilledHandler: CaseReducer<
   );
 };
 
-const deleteBoardThunkFulfilledHandler: CaseReducer<
-  IBoardState,
-  PayloadAction<string>
-> = (state, action) => {
+const deleteBoardThunkFulfilledHandler: CaseReducer<IBoardState, PayloadAction<string>> = (
+  state,
+  action
+) => {
   state.isLoading = false;
   state.boards = state.boards.filter((board) => board._id !== action.payload);
   if (state.selectedBoard._id === action.payload) {
@@ -84,14 +79,8 @@ const boardSlice = createSlice({
       )
       .addMatcher(isAnyOf(getBoardsThunk.fulfilled), getBoardsFulfilledHandler)
       .addMatcher(isAnyOf(getBoardById.fulfilled), getBoardByIdFulfilledHandler)
-      .addMatcher(
-        isAnyOf(editBoardThunk.fulfilled),
-        editBoardThunkFulfilledHandler
-      )
-      .addMatcher(
-        isAnyOf(deleteBoardThunk.fulfilled),
-        deleteBoardThunkFulfilledHandler
-      )
+      .addMatcher(isAnyOf(editBoardThunk.fulfilled), editBoardThunkFulfilledHandler)
+      .addMatcher(isAnyOf(deleteBoardThunk.fulfilled), deleteBoardThunkFulfilledHandler)
       .addMatcher(
         isAnyOf(
           getBoardsThunk.rejected,

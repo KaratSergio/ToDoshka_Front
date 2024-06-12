@@ -1,11 +1,6 @@
-import {
-  createSlice,
-  PayloadAction,
-  isAnyOf,
-  SerializedError,
-} from '@reduxjs/toolkit';
+import { createSlice, PayloadAction, isAnyOf, SerializedError } from '@reduxjs/toolkit';
 import { initialAuthState } from './initialState';
-import { handlePending, handleRejected } from '../stateHelpers'; // імпортуємо універсальні хелпери
+import { handlePending, handleRejected } from '../helpers/stateHelpers'; // імпортуємо універсальні хелпери
 
 import { AuthResponse, User } from './types';
 
@@ -24,51 +19,39 @@ const authSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(
-        registerThunk.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
-          state.user = action.payload.user;
-          state.token = action.payload.accessToken;
-          state.isLogin = true;
-          state.isLoading = false;
-          state.error = null;
-        }
-      )
-      .addCase(
-        loginThunk.fulfilled,
-        (state, action: PayloadAction<AuthResponse>) => {
-          state.user = action.payload.user;
-          state.token = action.payload.accessToken;
-          state.isLogin = true;
-          state.isLoading = false;
-          state.error = null;
-        }
-      )
+      .addCase(registerThunk.fulfilled, (state, action: PayloadAction<AuthResponse>) => {
+        state.user = action.payload.user;
+        state.token = action.payload.accessToken;
+        state.isLogin = true;
+        state.isLoading = false;
+        state.error = null;
+      })
+      .addCase(loginThunk.fulfilled, (state, action: PayloadAction<AuthResponse>) => {
+        state.user = action.payload.user;
+        state.token = action.payload.accessToken;
+        state.isLogin = true;
+        state.isLoading = false;
+        state.error = null;
+      })
       .addCase(logoutThunk.fulfilled, (state) => {
         state.isLoading = false;
         state.isLogin = false;
         state.user = { name: '', email: '', avatarURL: '', _id: '', theme: '' };
         state.token = '';
       })
-      .addCase(
-        currentUserThunk.fulfilled,
-        (state, action: PayloadAction<User>) => {
-          state.isLoading = false;
-          state.user = action.payload;
-        }
-      )
-      .addCase(
-        updateUserThunk.fulfilled,
-        (state, action: PayloadAction<User>) => {
-          state.isLoading = false;
-          state.user.name = action.payload.name;
-          state.user.email = action.payload.email;
-          state.user.avatarURL = action.payload.avatarURL;
-          state.user._id = action.payload._id;
-          state.isLogin = true;
-          state.isLoading = false;
-        }
-      )
+      .addCase(currentUserThunk.fulfilled, (state, action: PayloadAction<User>) => {
+        state.isLoading = false;
+        state.user = action.payload;
+      })
+      .addCase(updateUserThunk.fulfilled, (state, action: PayloadAction<User>) => {
+        state.isLoading = false;
+        state.user.name = action.payload.name;
+        state.user.email = action.payload.email;
+        state.user.avatarURL = action.payload.avatarURL;
+        state.user._id = action.payload._id;
+        state.isLogin = true;
+        state.isLoading = false;
+      })
       .addCase(sendHelpThunk.fulfilled, (state, action: PayloadAction<any>) => {
         state.isLoading = false;
         // Додаткові дії після успішного виконання sendHelpThunk
