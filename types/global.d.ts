@@ -3,6 +3,11 @@ declare module '*.svg' {
   export default content;
 }
 
+declare module '*.png' {
+  const value: string;
+  export default value;
+}
+
 interface ImportMetaEnv {
   VITE_URL_RENDER: string;
   // додайте інші змінні середовища, які ви використовуєте

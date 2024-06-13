@@ -10,17 +10,13 @@ const config: Config = {
     screens: {
       md: '768px',
       // => @media (min-width: 768px) { ... }
-
       xl: '1440px',
       // => @media (min-width: 1440px) { ... }
     },
     extend: {
       backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'custom-gradient': 'linear-gradient(180deg, rgba(196, 196, 196, 0) 5%, #bedbb0 95.19%)',
       },
-
       gap: {
         '14': '14px',
       },
@@ -30,8 +26,6 @@ const config: Config = {
       width: {
         '24': '24px',
         '260': '260px',
-        '375': '375px',
-        '1180': '1180px',
         '1440': '1440px',
       },
       height: {
@@ -41,4 +35,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
