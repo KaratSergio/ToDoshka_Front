@@ -2,6 +2,8 @@ import { Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 import SharedLayout from '../SharedLayout/SharedLayout';
+import PublicRoute from '../Routes/PublicRoute';
+import PrivateRoute from '../Routes/PrivateRoute';
 // pages*
 import HomePage from '@pages/HomePage/HomePage';
 import AuthPage from '@pages/AuthPage/AuthPage';
@@ -27,10 +29,17 @@ function App() {
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<WelcomePage />} />
-          <Route path="auth/:id" element={<AuthPage />} />
-          <Route path="/home" element={<HomePage />}>
-            <Route path=":boardName" element={<ScreensPage />} />
+
+          <Route element={<PublicRoute />}>
+            <Route path="auth/:id" element={<AuthPage />} />
           </Route>
+
+          <Route element={<PrivateRoute />}>
+            <Route path="/home" element={<HomePage />}>
+              <Route path=":boardName" element={<ScreensPage />} />
+            </Route>
+          </Route>
+
           <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>

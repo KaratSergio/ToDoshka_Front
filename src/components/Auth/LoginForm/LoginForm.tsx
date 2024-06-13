@@ -15,7 +15,7 @@ const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <input
-        autoComplete="off"
+        autoComplete="on"
         placeholder="Enter your email"
         type="email"
         {...register('email', {
@@ -24,7 +24,7 @@ const LoginForm = () => {
       />
       <div>
         <input
-          autoComplete="off"
+          autoComplete="on"
           placeholder="Create a password"
           {...register('password', {
             required: 'Required field',

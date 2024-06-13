@@ -1,8 +1,4 @@
-interface ITaskState {
-  isLoading: boolean;
-  isLogin: boolean;
-  error: string | null;
-}
+import { ITaskState } from "./types";
 
 export const initialTaskState: ITaskState = {
   isLoading: false,

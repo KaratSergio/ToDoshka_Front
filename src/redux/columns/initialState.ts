@@ -1,8 +1,4 @@
-interface IColumnState {
-  isLoading: boolean;
-  isLogin: boolean;
-  error: string | null;
-}
+import { IColumnState } from './types';
 
 export const initialColumnState: IColumnState = {
   isLoading: false,

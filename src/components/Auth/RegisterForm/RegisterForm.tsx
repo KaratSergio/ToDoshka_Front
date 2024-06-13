@@ -10,7 +10,9 @@ const RegisterForm = () => {
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
-    dispatch(registerThunk(data));
+    if (data) {
+      dispatch(registerThunk(data));
+    }
   };
 
   return (
