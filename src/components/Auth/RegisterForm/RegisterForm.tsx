@@ -1,22 +1,16 @@
 import { registerThunk } from '@src/redux/auth/thunks';
 import { useAppDispatch } from '@src/redux/store';
 import { useForm, SubmitHandler } from 'react-hook-form';
-
-
-interface IFormInput {
-  name: string;
-  email: string;
-  password: string;
-}
+import { IFormInput } from '../types';
 
 const RegisterForm = () => {
-  const dispatch = useAppDispatch()
+  const dispatch = useAppDispatch();
 
-  const { register, handleSubmit } = useForm<IFormInput>()
+  const { register, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
-    dispatch(registerThunk(data))
+    dispatch(registerThunk(data));
   };
 
   return (
@@ -25,10 +19,9 @@ const RegisterForm = () => {
         autoComplete="off"
         placeholder="Enter your name"
         {...register('name', {
-          required: 'Required field'
+          required: 'Required field',
         })}
       />
-
       <input
         autoComplete="off"
         placeholder="Enter your email"
@@ -41,7 +34,6 @@ const RegisterForm = () => {
         <input
           autoComplete="off"
           placeholder="Create a password"
-
           {...register('password', {
             required: 'Required field',
           })}
