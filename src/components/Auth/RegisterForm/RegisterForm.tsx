@@ -16,33 +16,38 @@ const RegisterForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <input
-        autoComplete="off"
-        placeholder="Enter your name"
-        {...register('name', {
-          required: 'Required field',
-        })}
-      />
-      <input
-        autoComplete="off"
-        placeholder="Enter your email"
-        type="email"
-        {...register('email', {
-          required: 'Required field',
-        })}
-      />
-      <div>
+    <form className="flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
+      <div className="flex flex-col justify-center items-center w-full max-w-[424px] gap-4">
         <input
+          className="w-[324px] py-4 px-4 border-2 rounded-lg"
           autoComplete="off"
-          placeholder="Create a password"
-          {...register('password', {
+          placeholder="Enter your name"
+          {...register('name', {
             required: 'Required field',
           })}
         />
-      </div>
-      <div>
-        <button type="submit">Register Now</button>
+        <input
+          className="w-[324px] py-4 px-4 border-2 rounded-lg"
+          autoComplete="off"
+          placeholder="Enter your email"
+          type="email"
+          {...register('email', {
+            required: 'Required field',
+          })}
+        />
+        <div>
+          <input
+            className="w-[324px] py-4 px-4 border-2 rounded-lg"
+            autoComplete="off"
+            placeholder="Create a password"
+            {...register('password', {
+              required: 'Required field',
+            })}
+          />
+        </div>
+        <div className="py-4 ps-4 rounded-lg bg-lime-200 w-[324px]">
+          <button type="submit">Register Now</button>
+        </div>
       </div>
     </form>
   );
