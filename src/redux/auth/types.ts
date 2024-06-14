@@ -79,8 +79,8 @@ export interface IAppState {
 // В залежності від вашої конфігурації редуктора, можливо, вам потрібно буде додати PersistPartial до розділів стану
 export interface RootState {
   auth: IAuthState;
-  boards: IBoardState & PersistPartial;
-  columns: IColumnState & PersistPartial;
-  tasks: ITaskState & PersistPartial;
-  modal: IModalState;
+  // boards: IBoardState & PersistPartial;
+  // columns: IColumnState & PersistPartial;
+  // tasks: ITaskState & PersistPartial;
+  // modal: IModalState;
 }
