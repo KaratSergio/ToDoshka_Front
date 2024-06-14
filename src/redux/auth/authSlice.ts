@@ -2,7 +2,7 @@ import { createSlice, PayloadAction, isAnyOf, SerializedError } from '@reduxjs/t
 import { initialAuthState } from './initialState';
 import { handlePending, handleRejected } from '../helpers/stateHelpers'; // імпортуємо універсальні хелпери
 
-import { AuthResponse, User } from './types';
+import { AuthResponse, IAuthState, User } from './types';
 
 import {
   currentUserThunk,
