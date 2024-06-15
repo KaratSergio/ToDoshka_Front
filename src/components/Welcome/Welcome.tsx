@@ -12,7 +12,7 @@ const Welcome = () => {
           <img src={Start2x} alt="Hello image" width={162} height={162} />
         </picture>
         <div className="flex items-center py-6">
-          <Icon id="logo" />
+          <Icon id="logo" width="w-12" height="h-12" />
           <p className="font-semibold text-4xl text-bg-color">Task Pro</p>
         </div>
       </div>

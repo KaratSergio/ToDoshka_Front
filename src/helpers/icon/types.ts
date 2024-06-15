@@ -1,7 +1,7 @@
 export interface IconProps {
-  id: string;
-  width?: number;
-  height?: number;
+  id?: string;
+  width?: string;
+  height?: string;
   color?: string;
   strokeColor?: string;
 }
