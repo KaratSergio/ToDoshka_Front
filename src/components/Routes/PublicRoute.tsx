@@ -10,9 +10,9 @@ const PublicRoute: React.FC = () => {
   //   return <div>...loader to hell</div>;
   // }
 
-  // if (isLogin) {
-  //   return <Navigate to="/home" />;
-  // }
+  if (isLogin) {
+    return <Navigate to="/home" />;
+  }
 
   return <Outlet />; ///AuthPage
 };
