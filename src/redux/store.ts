@@ -22,7 +22,7 @@ import { modalReducer } from './modal/modalSlice';
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['auth'],
+  whitelist: ['token'],
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
