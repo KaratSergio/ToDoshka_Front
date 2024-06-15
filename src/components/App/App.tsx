@@ -15,10 +15,17 @@ import Modal from '../Custom/CustomModal/Modal';
 import ModalContent from '../Custom/CustomModal/ModalContent';
 import { closeModal } from '@redux/modal/modalSlice';
 import { selectModalIsVisible } from '@redux/modal/selectors';
+import { useEffect } from 'react';
+import { currentUserThunk } from '@src/redux/auth/thunks';
+import { useAppDispatch } from '@src/redux/store';
 
 function App() {
   const isVisible = useSelector(selectModalIsVisible);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(currentUserThunk());
+  }, []);
 
   const handleClose = () => {
     dispatch(closeModal());
