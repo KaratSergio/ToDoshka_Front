@@ -4,7 +4,7 @@ import { AuthBody, AuthResponse, HelpBody, User } from './types';
 const BASE_URL = import.meta.env.VITE_URL_RENDER;
 // const BASE_URL = "http://localhost:3000/api/";
 
-const $instance = axios.create({ baseURL: BASE_URL });
+export const $instance = axios.create({ baseURL: BASE_URL });
 
 export const setAccessToken = (token: string) => {
   $instance.defaults.headers.common.Authorization = `Bearer ${token}`;

@@ -1,9 +1,5 @@
-import axios, { AxiosInstance } from 'axios';
 import { Board } from './types';
-
-const BASE_URL = import.meta.env.VITE_URL_RENDER;
-
-const $instance: AxiosInstance = axios.create({ baseURL: BASE_URL });
+import { $instance } from '../auth/actions';
 
 // =======================BOARDS-API-SERVICE=========================
 

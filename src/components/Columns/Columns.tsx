@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Columnts = () => {
+const Columns = () => {
   return <div></div>;
 };
 
-export default Columnts;
+export default Columns;

@@ -1,15 +1,18 @@
 import { useSelector } from 'react-redux';
 import { selectModalContent } from '@redux/modal/selectors';
+import CreateBoard from '@src/components/Boards/CreateBoard/CreateBoard';
+import { useAppSelector } from '@src/redux/store';
 
 const ModalContent: React.FC = () => {
-  const modalContent = useSelector(selectModalContent);
+  const modalContent = useAppSelector(selectModalContent);
+  console.log(modalContent);
 
   if (!modalContent) return null;
 
-  if (typeof modalContent === 'object' && 'action' in modalContent) {
-    switch (modalContent.action) {
-      case 'назва кейса':
-        return 'повертае компонент';
+  if (typeof modalContent === 'object' && 'content' in modalContent) {
+    switch (modalContent.content) {
+      case 'AddBoard':
+        return <CreateBoard />;
       case 'назва кейса':
         return 'повертае компонент';
       case 'назва кейса':
