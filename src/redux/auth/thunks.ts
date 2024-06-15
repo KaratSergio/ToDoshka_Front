@@ -1,20 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import {
-  currentUser,
-  login,
-  logout,
-  register,
-  sendHelp,
-  updateUser,
-} from './actions';
+import { currentUser, login, logout, register, sendHelp, updateUser } from './actions';
 
-import {
-  AuthBody,
-  AuthResponse,
-  UpdateUserParams,
-  User,
-} from './types'; // Імпорт необхідних типів
+import { AuthBody, AuthResponse, UpdateUserParams, User } from './types'; // Імпорт необхідних типів
 
 export const registerThunk = createAsyncThunk<AuthResponse, AuthBody>(
   'user/register',
@@ -52,11 +40,7 @@ export const logoutThunk = createAsyncThunk<{ message: string }, void>(
   }
 );
 
-export const currentUserThunk = createAsyncThunk<
-  User,
-  void,
-  { state: { auth: { token: string } } }
->(
+export const currentUserThunk = createAsyncThunk<User, void, { state: { auth: { token: string } } }>(
   'auth/current',
   async (_, thunkAPI) => {
     try {
@@ -101,14 +85,11 @@ export const updateUserThunk = createAsyncThunk<User, UpdateUserParams>(
 //   }
 // );
 
-export const sendHelpThunk = createAsyncThunk<any, any>(
-  'auth/needHelp',
-  async (data, thunkAPI) => {
-    try {
-      const res = await sendHelp(data);
-      return res;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+export const sendHelpThunk = createAsyncThunk<any, any>('auth/needHelp', async (data, thunkAPI) => {
+  try {
+    const res = await sendHelp(data);
+    return res;
+  } catch (error: any) {
+    return thunkAPI.rejectWithValue(error.message);
   }
-);
+});
