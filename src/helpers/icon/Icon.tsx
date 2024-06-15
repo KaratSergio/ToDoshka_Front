@@ -4,8 +4,8 @@ import sprite from '../../assets/svg/sprite.svg';
 
 const Icon: React.FC<IconProps> = ({
   id,
-  width = 'w-4',
-  height = 'w-4',
+  width,
+  height,
   color = 'fill-transparent',
   strokeColor = 'stroke-black',
 }) => {
