@@ -20,7 +20,9 @@
       "@pages/*": ["src/pages/*"],
       "@redux/*": ["src/redux/*"],
       "@helpers/*": ["src/helpers/*"],
-      "@assets/*": ["src/assets/*"]
+      "@assets/*": ["src/assets/*"],
+      "@schemas/*": ["src/schemas/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "src/main.tsx"],

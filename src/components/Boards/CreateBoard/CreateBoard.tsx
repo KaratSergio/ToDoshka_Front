@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { toast } from 'react-toastify';
-import sprite from '@assets/svg/sprite.svg';
-
-import { icons, backgrounds } from '../../../schemas/constants';
-import { titleSchema } from '../../../schemas/modalSchemas';
-import { useNavigate } from 'react-router';
-
+import { addBoardSchema } from '@schemas/modalSchemas';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { addBoardThunk, getBoardsThunk } from '@redux/boards/thunks';
 import { selectAllBoards } from '@redux/boards/selectors';
 
+import Icons from './Icons';
+import Backgrounds from './Backgrounds';
+
 import { BoardData } from '../types';
+import { closeModal } from '@redux/modal/modalSlice';
+import { useSelectionHandlers } from '../../Hooks/useSelectionHandlers';
 
 const CreateBoard: React.FC = () => {
   const {
@@ -22,7 +23,7 @@ const CreateBoard: React.FC = () => {
     setValue,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(titleSchema),
+    resolver: yupResolver(addBoardSchema),
     mode: 'onChange',
   });
 
@@ -30,8 +31,8 @@ const CreateBoard: React.FC = () => {
   const dispatch = useAppDispatch();
   const existingBoardTitles = useAppSelector(selectAllBoards);
 
-  const [selectedIcon, setSelectedIcon] = useState<string | undefined>(undefined);
-  const [selectedBackgroundId, setSelectedBackgroundId] = useState<string | undefined>(undefined);
+  const { selectedIcon, selectedBackgroundName, handleIconSelect, handleBackgroundSelect } =
+    useSelectionHandlers(setValue);
 
   useEffect(() => {
     dispatch(getBoardsThunk());
@@ -39,32 +40,6 @@ const CreateBoard: React.FC = () => {
 
   const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setValue('title', event.target.value.toString());
-  };
-
-  const handleIconSelect = (icon: string) => {
-    setSelectedIcon(icon);
-    setValue('icon', icon);
-  };
-
-  const handleBackgroundSelect = (backgroundId: string) => {
-    setSelectedBackgroundId(backgroundId);
-    setValue('background', backgroundId);
-  };
-
-  const renderIcons = () => {
-    return icons.map((icon) => (
-      <svg key={icon} onClick={() => handleIconSelect(icon)}>
-        <use href={`${sprite}#${icon}`} />
-      </svg>
-    ));
-  };
-
-  const renderBackgrounds = () => {
-    return backgrounds.map((item) => (
-      <div key={item.id} onClick={() => handleBackgroundSelect(item.name)}>
-        <img src={item.image} alt="Background" />
-      </div>
-    ));
   };
 
   const handleCreateBoard = (data: BoardData) => {
@@ -83,14 +58,15 @@ const CreateBoard: React.FC = () => {
     if (selectedIcon) {
       data.icon = selectedIcon;
     }
-    if (selectedBackgroundId) {
-      data.background = selectedBackgroundId;
+    if (selectedBackgroundName) {
+      data.background = selectedBackgroundName;
     }
 
     dispatch(addBoardThunk(data))
       .then((action) => {
         if (action.payload && '_id' in action.payload && action.payload._id) {
           navigate(action.payload._id);
+          dispatch(closeModal());
         } else {
           console.error('Invalid payload received:', action);
           throw new Error('Failed to extract _id from payload');
@@ -125,15 +101,12 @@ const CreateBoard: React.FC = () => {
           <p className="text-red-500 text-xs mt-1">{errors.title?.message}</p>
         </div>
 
-        <div>
-          <h3 className="text-lg font-semibold">Icons</h3>
-          <div className="grid grid-cols-4 gap-4">{renderIcons()}</div>
-        </div>
+        <Icons selectedIcon={selectedIcon} handleIconSelect={handleIconSelect} />
 
-        <div>
-          <h3 className="text-lg font-semibold">Background</h3>
-          <div className="grid grid-cols-4 gap-4">{renderBackgrounds()}</div>
-        </div>
+        <Backgrounds
+          selectedBackgroundName={selectedBackgroundName}
+          handleBackgroundSelect={handleBackgroundSelect}
+        />
 
         <div>
           <button

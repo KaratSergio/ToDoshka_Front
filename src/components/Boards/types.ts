@@ -9,3 +9,13 @@ export interface BackgroundItem {
   name: string;
   image: string;
 }
+
+export interface RenderBackgroundsProps {
+  selectedBackgroundName: string | undefined;
+  handleBackgroundSelect: (backgroundId: string) => void;
+}
+
+export interface RenderIconsProps {
+  selectedIcon: string | undefined;
+  handleIconSelect: (icon: string) => void;
+}

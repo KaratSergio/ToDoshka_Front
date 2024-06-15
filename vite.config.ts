@@ -12,6 +12,8 @@ export default defineConfig({
       '@redux': '/src/redux',
       '@helpers': '/src/helpers',
       '@assets': '/src/assets',
+      '@schemas': '/src/schemas',
+      '@utils': '/src/utils',
     },
   },
   base: '/ToDoshka_front/',
