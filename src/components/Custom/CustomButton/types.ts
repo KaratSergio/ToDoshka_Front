@@ -5,4 +5,5 @@ export interface IButtonProps {
   className?: string; // Tailwind CSS classes
   iconProp?: IconProps;
   onClick: () => void;
+  type?: 'submit' | 'button' | 'reset';
 }
