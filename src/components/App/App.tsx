@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { useAppDispatch } from '@redux/store';
-import { currentUserThunk } from '@redux/auth/thunks';
 import { Route, Routes } from 'react-router-dom';
+import { currentUserThunk } from '@src/redux/auth/thunks';
+import { useAppDispatch } from '@src/redux/store';
 
 import Layout from '../Layout/Layout';
 import PublicRoute from '@routes/PublicRoute';

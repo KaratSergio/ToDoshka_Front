@@ -1,4 +1,4 @@
-import Icon from '@helpers/Icon/Icon';
+import Icon from '@src/components/Icon/Icon';
 import { NavLink } from 'react-router-dom';
 import Start2x from '@assets/img/png/Start2x.png';
 import Start1x from '@assets/img/png/Start1x.png';

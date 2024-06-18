@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '@helpers/Icon/Icon';
+import Icon from '@src/components/Icon/Icon';
 import { icons } from '@utils/constants';
 
 import { RenderIconsProps } from '../types';

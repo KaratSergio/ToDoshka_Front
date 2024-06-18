@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import { addBoardSchema } from '@schemas/modalSchemas';
@@ -14,7 +14,7 @@ import Backgrounds from './Backgrounds';
 import Button from '@components/Custom/CustomButton/Button';
 import Input from '@components/Custom/CustomInput/Input';
 
-import Icon from '@helpers/Icon/Icon';
+import Icon from '@src/components/Icon/Icon';
 import { BoardData } from '../types';
 import { closeModal } from '@redux/modal/modalSlice';
 import { useSelectionHandlers } from '@hooks/useSelectionHandlers';

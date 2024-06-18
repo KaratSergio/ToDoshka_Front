@@ -12,6 +12,8 @@
     "isolatedModules": true,
     "jsx": "react-jsx",
     "incremental": true,
+    "typeRoots": ["node_modules/@types", "./types"],
+    "types": ["react", "react-dom", "react-router-dom"],
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {

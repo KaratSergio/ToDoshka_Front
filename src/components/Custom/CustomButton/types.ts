@@ -1,4 +1,4 @@
-import { IconProps } from '@helpers/Icon/types';
+import { IconProps } from '@src/components/Icon/types';
 
 export interface IButtonProps {
   children?: React.ReactNode;
