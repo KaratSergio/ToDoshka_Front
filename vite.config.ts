@@ -14,6 +14,8 @@ export default defineConfig({
       '@assets': '/src/assets',
       '@schemas': '/src/schemas',
       '@utils': '/src/utils',
+      '@hooks': '/src/hooks',
+      '@routes': '/src/routes',
     },
   },
   base: '/ToDoshka_front/',

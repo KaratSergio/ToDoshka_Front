@@ -1,8 +1,8 @@
-import Icon from '../../helpers/icon/Icon';
+import Icon from '@helpers/Icon/Icon';
 
 const Header = () => {
   return (
-    <header className=" flex min-w-80  px-5 py-3.5 bg-[var(--bg-header)]  md:px-8 py-18 xl:px-6 ">
+    <header className=" flex min-w-80  px-5 py-3.5 bg-[var(--bg-header)]  md:px-8 xl:px-6 ">
       <button
         type="button"
         className="flex items-center stroke-black border-0 bg-transparent w-24 h-24 p-0  xl:hidden"

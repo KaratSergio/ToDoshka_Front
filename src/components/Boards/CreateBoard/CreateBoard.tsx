@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
@@ -11,10 +11,13 @@ import { selectAllBoards } from '@redux/boards/selectors';
 
 import Icons from './Icons';
 import Backgrounds from './Backgrounds';
+import Button from '@components/Custom/CustomButton/Button';
+import Input from '@components/Custom/CustomInput/Input';
 
+import Icon from '@helpers/Icon/Icon';
 import { BoardData } from '../types';
 import { closeModal } from '@redux/modal/modalSlice';
-import { useSelectionHandlers } from '../../Hooks/useSelectionHandlers';
+import { useSelectionHandlers } from '@hooks/useSelectionHandlers';
 
 const CreateBoard: React.FC = () => {
   const {
@@ -31,20 +34,22 @@ const CreateBoard: React.FC = () => {
   const dispatch = useAppDispatch();
   const existingBoardTitles = useAppSelector(selectAllBoards);
 
-  const { selectedIcon, selectedBackgroundName, handleIconSelect, handleBackgroundSelect } =
-    useSelectionHandlers(setValue);
+  const {
+    selectedIcon,
+    selectedBackgroundName,
+    handleIconSelect,
+    handleBackgroundSelect,
+    handleInputChange,
+  } = useSelectionHandlers(setValue);
 
   useEffect(() => {
     dispatch(getBoardsThunk());
   }, [dispatch]);
 
-  const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setValue('title', event.target.value.toString());
-  };
-
   const handleCreateBoard = (data: BoardData) => {
     const { title } = data;
 
+    // Check if the board title already exists
     const isExist = existingBoardTitles.some((item) => item.title.trim() === title.trim());
 
     if (isExist) {
@@ -55,6 +60,7 @@ const CreateBoard: React.FC = () => {
       return;
     }
 
+    // Set selected icon and background if available
     if (selectedIcon) {
       data.icon = selectedIcon;
     }
@@ -62,16 +68,18 @@ const CreateBoard: React.FC = () => {
       data.background = selectedBackgroundName;
     }
 
+    // Dispatch the action to add the new board
     dispatch(addBoardThunk(data))
       .then((action) => {
         if (action.payload && '_id' in action.payload && action.payload._id) {
           navigate(action.payload._id);
           dispatch(closeModal());
         } else {
-          console.error('Invalid payload received:', action);
-          throw new Error('Failed to extract _id from payload');
+          console.error('Invalid response from the server:', action);
+          throw new Error('Failed to extract _id from the response');
         }
 
+        // Reset form values
         setValue('title', '');
         setValue('icon', undefined);
         setValue('background', undefined);
@@ -91,12 +99,11 @@ const CreateBoard: React.FC = () => {
 
       <form onSubmit={handleSubmit(handleCreateBoard)} className="space-y-4">
         <div>
-          <input
+          <Input
             type="text"
             placeholder="Title"
             {...register('title')}
-            onChange={handleTitleChange}
-            className="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+            onChange={handleInputChange}
           />
           <p className="text-red-500 text-xs mt-1">{errors.title?.message}</p>
         </div>
@@ -109,12 +116,12 @@ const CreateBoard: React.FC = () => {
         />
 
         <div>
-          <button
+          <Button
             type="submit"
-            className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="w-full py-2 px-4 border rounded-md text-white bg-indigo-600"
           >
-            Create
-          </button>
+            <Icon id="plus" width="w-6" height="h-6" />
+          </Button>
         </div>
       </form>
     </div>

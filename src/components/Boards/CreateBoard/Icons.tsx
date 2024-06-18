@@ -1,6 +1,7 @@
 import React from 'react';
-import Icon from '@helpers/icon/Icon';
+import Icon from '@helpers/Icon/Icon';
 import { icons } from '@utils/constants';
+
 import { RenderIconsProps } from '../types';
 
 const Icons: React.FC<RenderIconsProps> = ({ selectedIcon, handleIconSelect }) => {

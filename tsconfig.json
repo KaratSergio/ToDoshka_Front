@@ -22,7 +22,9 @@
       "@helpers/*": ["src/helpers/*"],
       "@assets/*": ["src/assets/*"],
       "@schemas/*": ["src/schemas/*"],
-      "@utils/*": ["src/utils/*"]
+      "@utils/*": ["src/utils/*"],
+      "@hooks/*": ["src/hooks/*"],
+      "@routes/*": ["src/routes/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "src/main.tsx"],

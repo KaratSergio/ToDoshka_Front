@@ -1,9 +1,9 @@
-import { IconProps } from '@src/helpers/icon/types';
+import { IconProps } from '@helpers/Icon/types';
 
 export interface IButtonProps {
   children?: React.ReactNode;
-  className?: string; // Tailwind CSS classes
+  className?: string;
   iconProp?: IconProps;
-  onClick: () => void;
+  onClick?: () => void;
   type?: 'submit' | 'button' | 'reset';
 }

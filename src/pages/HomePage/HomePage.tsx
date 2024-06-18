@@ -1,7 +1,7 @@
 import { Outlet } from 'react-router-dom';
-import Header from '../../components/Header/Header';
-import SideBar from '../../components/Sidebar/Sidebar';
-import { useTheme } from '../../components/Hooks/useTheme';
+import { useTheme } from '@hooks/useTheme';
+import Header from '@components/Header/Header';
+import Sidebar from '@components/Sidebar/Sidebar';
 
 const HomePage = () => {
   const { theme, setTheme } = useTheme();
@@ -9,7 +9,7 @@ const HomePage = () => {
   return (
     <div className="min-w-80 xl:flex flex-row min-w-1440 my-0 mx-auto">
       <div className="hidden  xl:flex">
-        <SideBar />
+        <Sidebar />
       </div>
       <div className="min-w-80  xl:w-1180">
         <Header />

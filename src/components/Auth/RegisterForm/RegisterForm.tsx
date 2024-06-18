@@ -1,9 +1,9 @@
-import React from 'react';
-import { useAppDispatch } from '@src/redux/store';
+import { useAppDispatch } from '@redux/store';
+import { registerThunk } from '@redux/auth/thunks';
 import { useForm, SubmitHandler } from 'react-hook-form';
-import { registerThunk } from '@src/redux/auth/thunks';
+
 import { IFormInput } from '../types';
-import Input from '@src/components/Custom/Input/Input';
+import Input from '@components/Custom/CustomInput/Input';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();

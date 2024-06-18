@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { openModal } from '@redux/modal/modalSlice';
 
-const SideBar = () => {
+const Sidebar = () => {
   const dispatch = useDispatch();
 
   const handleOpenModal = () => {
@@ -10,10 +10,10 @@ const SideBar = () => {
 
   return (
     <div className="w-260 bg-slate-300 h-screen">
-      <p>Side Bar</p>
+      <p>Sidebar</p>
       <button onClick={handleOpenModal}>CreateBoard</button>
     </div>
   );
 };
 
-export default SideBar;
+export default Sidebar;

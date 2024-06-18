@@ -1,6 +1,6 @@
 import React from 'react';
 import { IconProps } from './types';
-import sprite from '../../assets/svg/sprite.svg';
+import sprite from '@assets/svg/sprite.svg';
 
 const Icon: React.FC<IconProps> = ({
   id,

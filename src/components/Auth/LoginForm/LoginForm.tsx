@@ -1,8 +1,8 @@
-import { loginThunk } from '@src/redux/auth/thunks';
-import { useAppDispatch } from '@src/redux/store';
+import { useAppDispatch } from '@redux/store';
+import { loginThunk } from '@redux/auth/thunks';
 import { useForm, SubmitHandler } from 'react-hook-form';
+
 import { IFormInput } from '../types';
-import { Link } from 'react-router-dom';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();

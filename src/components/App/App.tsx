@@ -1,23 +1,23 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '@redux/store';
+import { currentUserThunk } from '@redux/auth/thunks';
 import { Route, Routes } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 
-import SharedLayout from '../SharedLayout/SharedLayout';
-import PublicRoute from '../Routes/PublicRoute';
-import PrivateRoute from '../Routes/PrivateRoute';
+import Layout from '../Layout/Layout';
+import PublicRoute from '@routes/PublicRoute';
+import PrivateRoute from '@routes/PrivateRoute';
 // pages*
 import HomePage from '@pages/HomePage/HomePage';
 import AuthPage from '@pages/AuthPage/AuthPage';
 import WelcomePage from '@pages/WelcomePage/WelcomePage';
-import ErrorPage from '@pages/ErrorPage/ErrorPage';
 import ScreensPage from '@pages/ScreensPage/ScreensPage';
+import ErrorPage from '@pages/ErrorPage/ErrorPage';
 // modal**
 import Modal from '../Custom/CustomModal/Modal';
 import ModalContent from '../Custom/CustomModal/ModalContent';
 import { closeModal } from '@redux/modal/modalSlice';
 import { selectModalIsVisible } from '@redux/modal/selectors';
-import { useEffect } from 'react';
-import { currentUserThunk } from '@src/redux/auth/thunks';
-import { useAppDispatch } from '@src/redux/store';
 
 function App() {
   const isVisible = useSelector(selectModalIsVisible);
@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path="/" element={<SharedLayout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<WelcomePage />} />
 
           <Route element={<PublicRoute />}>

@@ -17,10 +17,16 @@ export const useSelectionHandlers = (setValue: UseFormSetValue<any>) => {
     setValue('background', backgroundName);
   };
 
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setValue(name, value.toString());
+  };
+
   return {
     selectedIcon,
     selectedBackgroundName,
     handleIconSelect,
     handleBackgroundSelect,
+    handleInputChange,
   };
 };

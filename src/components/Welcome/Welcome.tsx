@@ -1,7 +1,7 @@
-import Icon from '@src/helpers/icon/Icon';
+import Icon from '@helpers/Icon/Icon';
 import { NavLink } from 'react-router-dom';
-import Start2x from '../../assets/img/png/Start2x.png';
-import Start1x from '../../assets/img/png/Start1x.png';
+import Start2x from '@assets/img/png/Start2x.png';
+import Start1x from '@assets/img/png/Start1x.png';
 
 const Welcome = () => {
   return (

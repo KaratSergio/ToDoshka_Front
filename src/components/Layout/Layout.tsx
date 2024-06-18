@@ -1,8 +1,7 @@
-import React, { ReactNode } from 'react';
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
-const SharedLayout = () => {
+const Layout = () => {
   return (
     <>
       <Suspense>
@@ -12,4 +11,4 @@ const SharedLayout = () => {
   );
 };
 
-export default SharedLayout;
+export default Layout;

@@ -1,8 +1,8 @@
-import LoginForm from '@src/components/Auth/LoginForm/LoginForm';
-import RegisterForm from '@src/components/Auth/RegisterForm/RegisterForm';
+import LoginForm from '@components/Auth/LoginForm/LoginForm';
+import RegisterForm from '@components/Auth/RegisterForm/RegisterForm';
 import { useState } from 'react';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import type { ReactTabsFunctionComponent, TabProps } from 'react-tabs';
 
 const CustomTab: ReactTabsFunctionComponent<TabProps> = ({ children, ...otherProps }) => (

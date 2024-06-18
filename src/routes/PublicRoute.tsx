@@ -1,6 +1,6 @@
-import { selectIsLogin, selectToken } from '@src/redux/auth/selectors';
-import { useAppSelector } from '@src/redux/store';
+import { useAppSelector } from '@redux/store';
 import { Outlet, Navigate } from 'react-router-dom';
+import { selectIsLogin, selectToken } from '@redux/auth/selectors';
 
 const PublicRoute: React.FC = () => {
   const isLogin = useAppSelector(selectIsLogin);
