@@ -1,4 +1,5 @@
-import Icon from '@src/components/Icon/Icon';
+import Icon from '../Icon/Icon';
+import UserInfo from './UserInfo/UserInfo';
 
 const Header = () => {
   return (
@@ -13,9 +14,9 @@ const Header = () => {
       {/* {isOpen && <Navigation close={close} />} */}
       <div className="flex gap-14 items-center ml-auto">
         <p>Theme</p>
-        <p>UserInfo</p>
-        {/* <Theme />
-        <UserInfo /> */}
+
+        {/* <Theme /> */}
+        <UserInfo />
       </div>
     </header>
   );

@@ -61,11 +61,11 @@ export const currentUserThunk = createAsyncThunk<User, void, { state: { auth: { 
   }
 );
 
-export const updateUserThunk = createAsyncThunk<User, UpdateUserParams>(
+export const updateUserThunk = createAsyncThunk<User, FormData>(
   'auth/update',
   async (userData, thunkAPI) => {
     try {
-      const res = await updateUser(userData.formData);
+      const res = await updateUser(userData);
       return res;
     } catch (error: any) {
       return thunkAPI.rejectWithValue(error.message);

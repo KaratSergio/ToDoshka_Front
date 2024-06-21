@@ -30,37 +30,15 @@ export interface HelpBody {
 }
 
 export interface UpdateUserParams {
-  formData: FormData;
+  avatar?: FileList;
+  name: string;
+  email: string;
+  password: string;
 }
 //initialStatets
-export interface IUser {
-  name: string;
-  email: string;
-  avatarURL: string;
-  _id: string;
-  theme: string;
-}
 
 export interface IAuthState {
-  user: IUser;
-  token: string;
-  isLoading: boolean;
-  isLogin: boolean;
-  error: string | null;
-}
-
-// types.ts
-
-export interface IUser {
-  name: string;
-  email: string;
-  avatarURL: string;
-  _id: string;
-  theme: string;
-}
-
-export interface IAuthState {
-  user: IUser;
+  user: User;
   token: string;
   isLoading: boolean;
   isLogin: boolean;

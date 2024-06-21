@@ -11,6 +11,7 @@
     --bg-header: #161616;
   }
 } */
+
 @layer utilities {
   .text-bg-color {
     color: var(--bg-color);

@@ -3,13 +3,14 @@ import { loginThunk } from '@redux/auth/thunks';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { IFormInput } from '../types';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { UserSchema } from '@src/schemas/modalSchemas';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm<IFormInput>();
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
     dispatch(loginThunk(data));
   };
 
