@@ -18,6 +18,8 @@ import Modal from '../Custom/CustomModal/Modal';
 import ModalContent from '../Custom/CustomModal/ModalContent';
 import { closeModal } from '@redux/modal/modalSlice';
 import { selectModalIsVisible } from '@redux/modal/selectors';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const isVisible = useSelector(selectModalIsVisible);
@@ -54,6 +56,18 @@ function App() {
       <Modal isVisible={isVisible} onClose={handleClose}>
         <ModalContent />
       </Modal>
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
     </>
   );
 }

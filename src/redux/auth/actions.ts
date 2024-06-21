@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { AuthBody, AuthResponse, HelpBody, User } from './types';
+import { AuthBody, AuthResponse, HelpBody, UpdateUserParams, User } from './types';
 
 const BASE_URL = import.meta.env.VITE_URL_RENDER;
 // const BASE_URL = "http://localhost:3000/api/";
@@ -44,8 +44,8 @@ export const currentUser = async (token: string): Promise<User> => {
   }
 };
 
-export const updateUser = async (formData: FormData): Promise<User> => {
-  const { data }: AxiosResponse<User> = await $instance.put('users/update', formData);
+export const updateUser = async (userData: FormData): Promise<User> => {
+  const { data }: AxiosResponse<User> = await $instance.put('users/update', userData);
   return data;
 };
 

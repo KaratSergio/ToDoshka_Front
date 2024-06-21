@@ -4,6 +4,8 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { IFormInput } from '../types';
 import Input from '@components/Custom/CustomInput/Input';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { UserSchema } from '@src/schemas/modalSchemas';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +14,10 @@ const RegisterForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<IFormInput>();
+  } = useForm<IFormInput>({
+    resolver: yupResolver(UserSchema),
+    mode: 'onChange',
+  });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     console.log(data);
@@ -25,6 +30,7 @@ const RegisterForm = () => {
     <form className="flex flex-col items-center" onSubmit={handleSubmit(onSubmit)}>
       <div className="flex flex-col justify-center items-center w-full max-w-[424px] gap-4">
         <Input
+          type="name"
           placeholder="Enter your name"
           {...register('name', { required: 'Required field' })}
           error={errors.name?.message}
