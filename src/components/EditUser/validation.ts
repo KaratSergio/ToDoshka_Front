@@ -6,7 +6,6 @@ interface ValidationResult {
 }
 
 export const validateFormData = (data: UpdateUserParams): ValidationResult => {
-  // Перевірка формату файлу
   if (data.avatar && data.avatar[0] && !/\.(jpg)$/.test(data.avatar[0].name.toLowerCase())) {
     return {
       isValid: false,
@@ -14,7 +13,6 @@ export const validateFormData = (data: UpdateUserParams): ValidationResult => {
     };
   }
 
-  // Перевірка імені
   if (!/^[a-zA-Z0-9 !@#$%^&*()_+,.:;'"?/-]+$/.test(data.name)) {
     return {
       isValid: false,
@@ -22,6 +20,5 @@ export const validateFormData = (data: UpdateUserParams): ValidationResult => {
     };
   }
 
-  // Перевірка пройшла успішно
   return { isValid: true };
 };

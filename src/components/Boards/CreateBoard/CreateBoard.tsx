@@ -14,7 +14,7 @@ import Backgrounds from './Backgrounds';
 import Button from '@components/Custom/CustomButton/Button';
 import Input from '@components/Custom/CustomInput/Input';
 
-import Icon from '@src/components/Icon/Icon';
+import Icon from '@components/Icon/Icon';
 import { BoardData } from '../types';
 import { closeModal } from '@redux/modal/modalSlice';
 import { useSelectionHandlers } from '@hooks/useSelectionHandlers';
@@ -48,8 +48,6 @@ const CreateBoard: React.FC = () => {
 
   const handleCreateBoard = (data: BoardData) => {
     const { title } = data;
-
-    // Check if the board title already exists
     const isExist = existingBoardTitles.some((item) => item.title.trim() === title.trim());
 
     if (isExist) {
@@ -60,7 +58,6 @@ const CreateBoard: React.FC = () => {
       return;
     }
 
-    // Set selected icon and background if available
     if (selectedIcon) {
       data.icon = selectedIcon;
     }
@@ -68,18 +65,16 @@ const CreateBoard: React.FC = () => {
       data.background = selectedBackgroundName;
     }
 
-    // Dispatch the action to add the new board
     dispatch(addBoardThunk(data))
       .then((action) => {
         if (action.payload && '_id' in action.payload && action.payload._id) {
-          navigate(action.payload._id);
+          navigate(`/board/${action.payload._id}`);
           dispatch(closeModal());
         } else {
           console.error('Invalid response from the server:', action);
           throw new Error('Failed to extract _id from the response');
         }
 
-        // Reset form values
         setValue('title', '');
         setValue('icon', undefined);
         setValue('background', undefined);

@@ -1,5 +1,4 @@
-import React from 'react';
-import Icon from '@src/components/Icon/Icon';
+import Icon from '@components/Icon/Icon';
 import { icons } from '@utils/constants';
 
 import { RenderIconsProps } from '../types';
@@ -13,7 +12,7 @@ const Icons: React.FC<RenderIconsProps> = ({ selectedIcon, handleIconSelect }) =
           <div
             key={icon}
             onClick={() => handleIconSelect(icon)}
-            className={`w-[18px] h-[18px] cursor-pointer ${
+            className={`flex items-center w-[18px] h-[18px] cursor-pointer ${
               selectedIcon === icon ? 'border border-blue-500' : ''
             }`}
           >

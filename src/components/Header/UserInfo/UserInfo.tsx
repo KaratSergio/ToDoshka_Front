@@ -1,11 +1,12 @@
-import { selectUser } from '@src/redux/auth/selectors';
-import { openModal } from '@src/redux/modal/modalSlice';
-import { useAppDispatch, useAppSelector } from '@src/redux/store';
+import { selectUser } from '@redux/auth/selectors';
+import { openModal } from '@redux/modal/modalSlice';
+import { useAppDispatch, useAppSelector } from '@redux/store';
+import defaultAvatar from '@assets/img/userAvatar/user-dark.png';
 
 const UserInfo = () => {
   const dispatch = useAppDispatch();
   const handleClick = () => {
-    dispatch(openModal('editUser'));
+    dispatch(openModal('EditUser'));
   };
   const user = useAppSelector(selectUser);
   return (
@@ -17,11 +18,7 @@ const UserInfo = () => {
             <img src={user.avatarURL} alt="user-avatar" className="w-8 h-8" />
           </div>
         ) : (
-          <img
-            src="../../../../src/assets/img/userAvatar/user-dark.png"
-            alt="userAvatar"
-            className="w-8 h-8"
-          />
+          <img src={defaultAvatar} alt="userAvatar" className="w-8 h-8" />
         )}
       </button>
     </div>

@@ -1,4 +1,3 @@
-import React from 'react';
 import { CustomModalProps } from './types';
 import Button from '../CustomButton/Button';
 
@@ -13,7 +12,7 @@ const Modal: React.FC<CustomModalProps> = ({ isVisible, onClose, children }) => 
           <Button
             onClick={onClose}
             type="button"
-            className="  w-8 h-8 "
+            className="  w-5 h-5 "
             iconProp={{ id: 'icon-x', color: 'fill-black' }}
           />
         </div>

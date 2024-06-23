@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { updateUserThunk } from '@redux/auth/thunks';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -7,10 +6,11 @@ import Input from '@components/Custom/CustomInput/Input';
 import UploaderAvatar from './UploaderAvatar';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { UpdateUserParams } from '@src/redux/auth/types';
-import { closeModal } from '@src/redux/modal/modalSlice';
-import { selectUser } from '@src/redux/auth/selectors';
-import { UserSchema } from '@src/schemas/modalSchemas';
+import { UpdateUserParams } from '@redux/auth/types';
+import { closeModal } from '@redux/modal/modalSlice';
+import { selectUser } from '@redux/auth/selectors';
+import { UserSchema } from '@schemas/modalSchemas';
+
 import { validateFormData } from './validation';
 import { toast } from 'react-toastify';
 

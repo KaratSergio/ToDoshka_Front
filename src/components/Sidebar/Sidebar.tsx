@@ -1,11 +1,11 @@
-import { useDispatch } from 'react-redux';
+import { useAppDispatch } from '@redux/store';
 import { openModal } from '@redux/modal/modalSlice';
 
 const Sidebar = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const handleOpenModal = () => {
-    dispatch(openModal('AddBoard'));
+    dispatch(openModal('AddNewBoard'));
   };
 
   return (

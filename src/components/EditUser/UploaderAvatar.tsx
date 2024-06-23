@@ -1,8 +1,7 @@
 import { forwardRef, useEffect, useState } from 'react';
 import Icon from '../Icon/Icon';
-import foto from '../../assets/img/userAvatar/user-dark.png';
+import foto from '@assets/img/userAvatar/user-dark.png';
 import { UploaderAvatarInterface } from './uploaderAvatar.interface';
-import { useForm } from 'react-hook-form';
 
 const UploaderAvatar = forwardRef<HTMLInputElement, UploaderAvatarInterface>(
   ({ error, avatarURL, selectedFile, ...props }, ref) => {

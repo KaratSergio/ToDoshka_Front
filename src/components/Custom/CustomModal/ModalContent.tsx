@@ -1,7 +1,8 @@
-import { useAppSelector } from '@src/redux/store';
+import { useAppSelector } from '@redux/store';
 import { selectModalContent } from '@redux/modal/selectors';
-import CreateBoard from '@src/components/Boards/CreateBoard/CreateBoard';
-import EditUser from '@src/components/EditUser/EditUser';
+
+import CreateBoard from '@components/Boards/CreateBoard/CreateBoard';
+import EditUser from '@components/EditUser/EditUser';
 
 const ModalContent: React.FC = () => {
   const modalContent = useAppSelector(selectModalContent);
@@ -9,9 +10,9 @@ const ModalContent: React.FC = () => {
   if (!modalContent) return null;
 
   switch (modalContent.content) {
-    case 'AddBoard':
+    case 'AddNewBoard':
       return <CreateBoard />;
-    case 'editUser':
+    case 'EditUser':
       return <EditUser />;
     case 'назва кейса':
       return 'повертае компонент';
