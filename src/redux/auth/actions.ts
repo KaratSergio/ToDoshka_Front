@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { AuthBody, AuthResponse, HelpBody, UpdateUserParams, User } from './types';
 
 const BASE_URL = import.meta.env.VITE_URL_RENDER;
-// const BASE_URL = "http://localhost:3000/api/";
+// const BASE_URL = 'http://localhost:3000/api/';
 
 export const $instance = axios.create({ baseURL: BASE_URL });
 

@@ -25,7 +25,7 @@ const CreateBoard: React.FC = () => {
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm({
+  } = useForm<BoardData>({
     resolver: yupResolver(addBoardSchema),
     mode: 'onChange',
   });
@@ -68,8 +68,10 @@ const CreateBoard: React.FC = () => {
     dispatch(addBoardThunk(data))
       .then((action) => {
         if (action.payload && '_id' in action.payload && action.payload._id) {
-          navigate(`/board/${action.payload._id}`);
+          dispatch(getBoardsThunk());
           dispatch(closeModal());
+
+          navigate(`/home/board/${action.payload._id}`);
         } else {
           console.error('Invalid response from the server:', action);
           throw new Error('Failed to extract _id from the response');
@@ -99,6 +101,7 @@ const CreateBoard: React.FC = () => {
             placeholder="Title"
             {...register('title')}
             onChange={handleInputChange}
+            className="border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
           <p className="text-red-500 text-xs mt-1">{errors.title?.message}</p>
         </div>
@@ -113,9 +116,10 @@ const CreateBoard: React.FC = () => {
         <div>
           <Button
             type="submit"
-            className="w-full py-2 px-4 border rounded-md text-white bg-indigo-600"
+            className="w-full py-2 px-4 border rounded-md text-white bg-indigo-600 flex items-center justify-center"
           >
-            <Icon id="plus" width="w-6" height="h-6" />
+            <Icon id="plus" width="w-6" height="h-6" className="mr-2" />
+            Create Board
           </Button>
         </div>
       </form>

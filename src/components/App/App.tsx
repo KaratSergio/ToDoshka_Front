@@ -18,6 +18,7 @@ import Modal from '../Custom/CustomModal/Modal';
 import ModalContent from '../Custom/CustomModal/ModalContent';
 import { closeModal } from '@redux/modal/modalSlice';
 import { selectModalIsVisible } from '@redux/modal/selectors';
+
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -45,7 +46,7 @@ function App() {
 
           <Route element={<PrivateRoute />}>
             <Route path="/home" element={<HomePage />}>
-              <Route path=":boardName" element={<ScreensPage />} />
+              <Route path="board/:boardId" element={<ScreensPage />} />
             </Route>
           </Route>
 

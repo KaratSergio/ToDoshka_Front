@@ -1,11 +1,11 @@
 import { useAppDispatch } from '@redux/store';
 import { registerThunk } from '@redux/auth/thunks';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 
 import { IFormInput } from '../types';
 import Input from '@components/Custom/CustomInput/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserSchema } from '@src/schemas/modalSchemas';
+import { UserSchema } from '@schemas/modalSchemas';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({
-    resolver: yupResolver(UserSchema),
+    resolver: yupResolver(UserSchema) as Resolver<IFormInput>,
     mode: 'onChange',
   });
 

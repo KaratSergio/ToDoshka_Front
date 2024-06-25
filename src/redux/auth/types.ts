@@ -35,7 +35,6 @@ export interface UpdateUserParams {
   email: string;
   password: string;
 }
-//initialStatets
 
 export interface IAuthState {
   user: User;
