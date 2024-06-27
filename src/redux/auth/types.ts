@@ -44,7 +44,6 @@ export interface IAuthState {
   error: string | null;
 }
 
-// Додайте інші розділи стану, якщо потрібно
 export interface IAppState {
   auth: IAuthState;
   boards: IBoardState;
@@ -53,7 +52,6 @@ export interface IAppState {
   modal: IModalState;
 }
 
-// В залежності від вашої конфігурації редуктора, можливо, вам потрібно буде додати PersistPartial до розділів стану
 export interface RootState {
   auth: IAuthState;
   // boards: IBoardState & PersistPartial;

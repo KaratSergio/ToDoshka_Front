@@ -10,11 +10,11 @@ const PublicRoute: React.FC = () => {
   //   return <div>...loader to hell</div>;
   // }
 
-  if (isLogin) {
+  if (isLogin && token) {
     return <Navigate to="/home" />;
   }
 
-  return <Outlet />; ///AuthPage
+  return <Outlet />;
 };
 
 export default PublicRoute;

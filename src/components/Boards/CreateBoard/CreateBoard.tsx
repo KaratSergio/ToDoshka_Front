@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { addBoardSchema } from '@schemas/modalSchemas';
+import { addBoardSchema } from '@schemas/addBoardSchemas';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { addBoardThunk, getBoardsThunk } from '@redux/boards/thunks';
 import { selectAllBoards } from '@redux/boards/selectors';
@@ -33,6 +33,10 @@ const CreateBoard: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const existingBoardTitles = useAppSelector(selectAllBoards);
+
+  console.log('====================================');
+  console.log('aaaaaaaa', existingBoardTitles);
+  console.log('====================================');
 
   const {
     selectedIcon,

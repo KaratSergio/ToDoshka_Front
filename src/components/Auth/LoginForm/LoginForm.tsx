@@ -4,7 +4,7 @@ import { useForm, SubmitHandler } from 'react-hook-form';
 
 import { IFormInput } from '../types';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserSchema } from '@schemas/modalSchemas';
+import { UserSchema } from '@schemas/authSchemas';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();

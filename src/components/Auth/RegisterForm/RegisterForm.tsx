@@ -5,7 +5,7 @@ import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 import { IFormInput } from '../types';
 import Input from '@components/Custom/CustomInput/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserSchema } from '@schemas/modalSchemas';
+import { UserSchema } from '@schemas/authSchemas';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();

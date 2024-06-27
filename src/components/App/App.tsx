@@ -5,13 +5,13 @@ import { currentUserThunk } from '@src/redux/auth/thunks';
 import { useAppDispatch } from '@src/redux/store';
 
 import Layout from '../Layout/Layout';
+import ScreensPage from '../Screens/ScreensPage';
 import PublicRoute from '@routes/PublicRoute';
 import PrivateRoute from '@routes/PrivateRoute';
 // pages*
 import HomePage from '@pages/HomePage/HomePage';
 import AuthPage from '@pages/AuthPage/AuthPage';
 import WelcomePage from '@pages/WelcomePage/WelcomePage';
-import ScreensPage from '@pages/ScreensPage/ScreensPage';
 import ErrorPage from '@pages/ErrorPage/ErrorPage';
 // modal**
 import Modal from '../Custom/CustomModal/Modal';

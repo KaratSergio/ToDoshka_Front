@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UpdateUserParams } from '@redux/auth/types';
 import { closeModal } from '@redux/modal/modalSlice';
 import { selectUser } from '@redux/auth/selectors';
-import { UserSchema } from '@schemas/modalSchemas';
+import { UserSchema } from '@schemas/authSchemas';
 
 import { validateFormData } from './validation';
 import { toast } from 'react-toastify';
