@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '@redux/store';
 
 import { getBoardById } from '@redux/boards/thunks';
 import { selectAllBoards } from '@redux/boards/selectors';
-import { useAppDispatch, useAppSelector } from '@redux/store';
-
 import Button from '../../Custom/CustomButton/Button';
-import { useNavigate } from 'react-router-dom';
 
 const NewBoard = () => {
-  const { boardId } = useParams<{ boardId?: string }>();
+  const { boardId } = useParams<{ boardId: string }>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const boards = useAppSelector(selectAllBoards);
@@ -20,7 +18,7 @@ const NewBoard = () => {
 
   useEffect(() => {
     if (boardId) {
-      const board = boards?.find((board) => board._id === boardId);
+      const board = boards.find((board) => board._id === boardId);
       if (board) {
         dispatch(getBoardById(boardId))
           .then(() => {
@@ -34,7 +32,7 @@ const NewBoard = () => {
   }, [dispatch, navigate, boardId, boards]);
 
   return (
-    <div className="bg-gray-400">
+    <div className="bg-gray-300 ">
       <div className="flex">
         <Button>Add another column</Button>
       </div>
