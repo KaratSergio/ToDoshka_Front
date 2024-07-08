@@ -1,55 +1,37 @@
-import { createAsyncThunk } from '@reduxjs/toolkit';
-
 import { currentUser, login, logout, register, sendHelp, updateUser } from './actions';
+import { AuthBody, AuthResponse, User } from './types';
+import thunkMiddleware from '../helpers/thunkMiddleware';
 
-import { AuthBody, AuthResponse, UpdateUserParams, User } from './types'; // Імпорт необхідних типів
-
-export const registerThunk = createAsyncThunk<AuthResponse, AuthBody>(
+export const registerThunk = thunkMiddleware<AuthResponse, AuthBody>(
   'user/register',
   async (data, thunkAPI) => {
-    try {
-      const res = await register(data);
-      return res;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    const res = await register(data);
+    return res;
   }
 );
 
-export const loginThunk = createAsyncThunk<AuthResponse, AuthBody>(
+export const loginThunk = thunkMiddleware<AuthResponse, AuthBody>(
   'user/login',
   async (data, thunkAPI) => {
-    try {
-      const res = await login(data);
-      return res;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    const res = await login(data);
+    return res;
   }
 );
 
-export const logoutThunk = createAsyncThunk<{ message: string }, void>(
+export const logoutThunk = thunkMiddleware<{ message: string }, void>(
   'user/logout',
   async (_, thunkAPI) => {
-    try {
-      const res = await logout();
-      return res;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    const res = await logout();
+    return res;
   }
 );
 
-export const currentUserThunk = createAsyncThunk<User, void, { state: { auth: { token: string } } }>(
+export const currentUserThunk = thunkMiddleware<User>(
   'auth/current',
   async (_, thunkAPI) => {
-    try {
-      const { auth } = thunkAPI.getState();
-      const res = await currentUser(auth.token);
-      return res;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    const { auth } = thunkAPI.getState();
+    const res = await currentUser(auth.token);
+    return res;
   },
   {
     condition: (_, { getState }) => {
@@ -61,17 +43,19 @@ export const currentUserThunk = createAsyncThunk<User, void, { state: { auth: { 
   }
 );
 
-export const updateUserThunk = createAsyncThunk<User, FormData>(
+export const updateUserThunk = thunkMiddleware<User, FormData>(
   'auth/update',
   async (userData, thunkAPI) => {
-    try {
-      const res = await updateUser(userData);
-      return res;
-    } catch (error: any) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
+    const { auth } = thunkAPI.getState();
+    const res = await updateUser(userData);
+    return res;
   }
 );
+
+export const sendHelpThunk = thunkMiddleware<any, any>('auth/needHelp', async (data, thunkAPI) => {
+  const res = await sendHelp(data);
+  return res;
+});
 
 // export const changeThemeThunk = createAsyncThunk<string, string>(
 //   "auth/theme",
@@ -84,12 +68,3 @@ export const updateUserThunk = createAsyncThunk<User, FormData>(
 //     }
 //   }
 // );
-
-export const sendHelpThunk = createAsyncThunk<any, any>('auth/needHelp', async (data, thunkAPI) => {
-  try {
-    const res = await sendHelp(data);
-    return res;
-  } catch (error: any) {
-    return thunkAPI.rejectWithValue(error.message);
-  }
-});

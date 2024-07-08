@@ -6,9 +6,13 @@ const PrivateRoute: React.FC = () => {
   const isLogin = useAppSelector(selectIsLogin);
   const token = useAppSelector(selectToken);
 
-  if (isLogin && !token) {
-    return <div>...Loading</div>;
-  }
+  console.log('====================================');
+  console.log(token, 'loggin:', isLogin);
+  console.log('====================================');
+
+  // if (isLogin && token) {
+  //   return <Navigate to="/home" />;
+  // }
   if (!isLogin && !token) {
     return <Navigate to="/" />;
   }

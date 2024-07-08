@@ -54,7 +54,7 @@ export interface IAppState {
 
 export interface RootState {
   auth: IAuthState;
-  // boards: IBoardState & PersistPartial;
+  boards: IBoardState & PersistPartial;
   // columns: IColumnState & PersistPartial;
   // tasks: ITaskState & PersistPartial;
   // modal: IModalState;

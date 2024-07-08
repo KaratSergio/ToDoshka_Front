@@ -1,42 +1,49 @@
 import { Board } from './types';
+import { RootState } from '../store';
+import { CustomThunkConfig } from '../helpers/types';
 import thunkMiddleware from '../helpers/thunkMiddleware';
+import { getAllBoards, addBoard, getBoard, editBoard, deleteBoard } from './actions';
 
-import { addBoard, getBoard, editBoard, deleteBoard, getAllBoards } from './actions';
 
-export const getBoardsThunk = thunkMiddleware<Board[], void, { rejectValue: { message: string } }>(
+export const getBoardsThunk = thunkMiddleware<Board[], void, CustomThunkConfig>(
   'boards/getBoard',
-  async () => {
-    return await getAllBoards();
+  async (_, thunkAPI) => {
+    const state = thunkAPI.getState() as RootState;
+    const token = state.auth.token;
+    return await getAllBoards(token);
   }
 );
 
-export const addBoardThunk = thunkMiddleware<Board, Board, { rejectValue: { message: string } }>(
+export const addBoardThunk = thunkMiddleware<Board, Board, CustomThunkConfig>(
   'boards/addBoard',
   async (body) => {
     return await addBoard(body);
   }
 );
 
-export const getBoardById = thunkMiddleware<Board, string, { rejectValue: { message: string } }>(
+export const getBoardById = thunkMiddleware<Board, string, CustomThunkConfig>(
   'boards/singleBoard',
-  async (id) => {
-    return await getBoard(id);
+  async (id, thunkAPI) => {
+    const state = thunkAPI.getState() as RootState;
+    const token = state.auth.token;
+    return await getBoard(token, id);
   }
 );
 
 export const editBoardThunk = thunkMiddleware<
   Board,
-  { id: string; board: Board },
-  { rejectValue: { message: string } }
->('boards/editBoard', async ({ id, board }) => {
-  return await editBoard(id, board);
+  { token: string; id: string; board: Board },
+  CustomThunkConfig
+>('boards/editBoard', async ({ token, id, board }, thunkAPI) => {
+  return await editBoard(token, id, board);
 });
 
 export const deleteBoardThunk = thunkMiddleware<
   string,
-  string,
-  { rejectValue: { message: string } }
->('boards/deleteBoard', async (id) => {
-  await deleteBoard(id);
+  { token: string; id: string },
+  CustomThunkConfig
+>('boards/deleteBoard', async (params, thunkAPI) => {
+  const { token, id } = params;
+  await deleteBoard(token, id);
   return id;
 });

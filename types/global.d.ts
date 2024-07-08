@@ -10,7 +10,6 @@ declare module '*.png' {
 
 interface ImportMetaEnv {
   VITE_URL_RENDER: string;
-  // додайте інші змінні середовища, які ви використовуєте
 }
 
 interface ImportMeta {

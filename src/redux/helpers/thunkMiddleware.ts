@@ -5,11 +5,7 @@ import {
   AsyncThunkPayloadCreator,
 } from '@reduxjs/toolkit';
 
-interface CustomThunkConfig {
-  rejectValue: {
-    message: string;
-  };
-}
+import { CustomThunkConfig } from './types';
 
 const thunkMiddleware = <
   Returned,

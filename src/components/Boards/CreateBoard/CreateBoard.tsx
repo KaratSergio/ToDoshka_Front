@@ -32,10 +32,10 @@ const CreateBoard: React.FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
-  const existingBoardTitles = useAppSelector(selectAllBoards);
+  const existingBoards = useAppSelector(selectAllBoards);
 
   console.log('====================================');
-  console.log('aaaaaaaa', existingBoardTitles);
+  console.log('CreateBoard', existingBoards);
   console.log('====================================');
 
   const {
@@ -48,11 +48,11 @@ const CreateBoard: React.FC = () => {
 
   useEffect(() => {
     dispatch(getBoardsThunk());
-  }, [dispatch]);
+  }, []);
 
   const handleCreateBoard = (data: BoardData) => {
     const { title } = data;
-    const isExist = existingBoardTitles.some((item) => item.title.trim() === title.trim());
+    const isExist = existingBoards.some((item) => item.title.trim() === title.trim());
 
     if (isExist) {
       toast.error(`${data.title} already exists!`, {

@@ -6,7 +6,7 @@ import { getBoardById } from '@redux/boards/thunks';
 import { selectAllBoards } from '@redux/boards/selectors';
 import Button from '../../Custom/CustomButton/Button';
 
-const NewBoard = () => {
+const Board = () => {
   const { boardId } = useParams<{ boardId: string }>();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -40,4 +40,4 @@ const NewBoard = () => {
   );
 };
 
-export default NewBoard;
+export default Board;
