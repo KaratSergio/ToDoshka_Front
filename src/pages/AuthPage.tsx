@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
+
 import LoginForm from '@components/Auth/LoginForm/LoginForm';
 import RegisterForm from '@components/Auth/RegisterForm/RegisterForm';
-import { useState } from 'react';
 
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import type { ReactTabsFunctionComponent, TabProps } from 'react-tabs';
@@ -18,7 +20,18 @@ const CustomTab: ReactTabsFunctionComponent<TabProps> = ({ children, ...otherPro
 CustomTab.tabsRole = 'Tab';
 
 const AuthPage = () => {
+  const location = useLocation();
   const [activeTabIndex, setActiveTabIndex] = useState(0);
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get('tab');
+    if (tab === 'login') {
+      setActiveTabIndex(1);
+    } else {
+      setActiveTabIndex(0);
+    }
+  }, [location]);
 
   return (
     <section className="p-4">

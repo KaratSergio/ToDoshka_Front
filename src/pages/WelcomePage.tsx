@@ -1,7 +1,7 @@
-import Icon from '@components/Icon/Icon';
 import { NavLink } from 'react-router-dom';
 import Start2x from '@assets/img/png/Start2x.png';
 import Start1x from '@assets/img/png/Start1x.png';
+import Icon from '@components/Icon/Icon';
 
 const WelcomePage = () => {
   return (
@@ -22,7 +22,7 @@ const WelcomePage = () => {
           start achieving your goals now!
         </p>
         <div className="flex justify-center flex-col items-center my-10 gap-2">
-          <NavLink to="/auth/register">
+          <NavLink to="/auth/register?tab=register">
             <button
               className="w-[344px] text-slate-50 text-sm bg-gray-500 hover:bg-black py-4 rounded-lg"
               type="button"
@@ -32,7 +32,7 @@ const WelcomePage = () => {
               Registration
             </button>
           </NavLink>
-          <NavLink to="/auth/login">
+          <NavLink to="/auth/login?tab=login">
             <button
               className="w-[344px] text-slate-50 text-sm bg-gray-500 hover:bg-black py-4 rounded-lg"
               type="button"

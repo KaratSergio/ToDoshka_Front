@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { AuthBody, AuthResponse, HelpBody, UpdateUserParams, User } from './types';
+import { AuthBody, AuthResponse, HelpBody, User } from './types';
 
 const BASE_URL = import.meta.env.VITE_URL_RENDER;
 // const BASE_URL = 'http://localhost:3000/api/';
@@ -10,7 +10,7 @@ export const setAccessToken = (token: string) => {
   $instance.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const clearAccessToken = () => {
+export const clearAccessToken = () => {
   $instance.defaults.headers.common.Authorization = '';
 };
 

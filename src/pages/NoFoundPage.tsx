@@ -1,4 +1,4 @@
-const ErrorPage = () => {
+const NoFoundPage = () => {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="text-center">
@@ -9,4 +9,4 @@ const ErrorPage = () => {
   );
 };
 
-export default ErrorPage;
+export default NoFoundPage;

@@ -3,6 +3,8 @@ import { selectModalContent } from '@redux/modal/selectors';
 
 import CreateBoard from '@components/Boards/CreateBoard/CreateBoard';
 import EditUser from '@components/EditUser/EditUser';
+import LoginForm from '@components/Auth/LoginForm/LoginForm';
+import RegisterForm from '@components/Auth/RegisterForm/RegisterForm';
 
 const ModalContent: React.FC = () => {
   const modalContent = useAppSelector(selectModalContent);
@@ -14,14 +16,6 @@ const ModalContent: React.FC = () => {
       return <CreateBoard />;
     case 'EditUser':
       return <EditUser />;
-    case 'назва кейса':
-      return 'повертае компонент';
-    case 'назва кейса':
-      return 'повертае компонент';
-    case 'назва кейса':
-      return 'повертае компонент';
-    case 'назва кейса':
-      return 'повертае компонент';
     default:
       return null;
   }

@@ -9,7 +9,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { UpdateUserParams } from '@redux/auth/types';
 import { closeModal } from '@redux/modal/modalSlice';
 import { selectUser } from '@redux/auth/selectors';
-import { UserSchema } from '@schemas/authSchemas';
+import { RegisterSchema } from '@schemas/authSchemas';
 
 import { validateFormData } from './validation';
 import { toast } from 'react-toastify';
@@ -30,7 +30,7 @@ const EditUser: React.FC = () => {
       email: email,
       password: '',
     },
-    resolver: yupResolver(UserSchema),
+    resolver: yupResolver(RegisterSchema),
     mode: 'onChange',
   });
   const selectedFile = watch('avatar');

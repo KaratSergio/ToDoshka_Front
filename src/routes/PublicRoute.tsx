@@ -6,10 +6,6 @@ const PublicRoute: React.FC = () => {
   const isLogin = useAppSelector(selectIsLogin);
   const token = useAppSelector(selectToken);
 
-  // if (!isLogin && token) {
-  //   return <div>...loader to hell</div>;
-  // }
-
   if (isLogin && token) {
     return <Navigate to="/home" />;
   }

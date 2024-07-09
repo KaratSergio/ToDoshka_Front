@@ -5,7 +5,7 @@ import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 import { IFormInput } from '../types';
 import Input from '@components/Custom/CustomInput/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserSchema } from '@schemas/authSchemas';
+import { RegisterSchema } from '@schemas/authSchemas';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +15,7 @@ const RegisterForm = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<IFormInput>({
-    resolver: yupResolver(UserSchema) as Resolver<IFormInput>,
+    resolver: yupResolver(RegisterSchema) as Resolver<IFormInput>,
     mode: 'onChange',
   });
 

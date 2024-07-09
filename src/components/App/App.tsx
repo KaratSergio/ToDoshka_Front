@@ -1,18 +1,17 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
-import { currentUserThunk } from '@src/redux/auth/thunks';
-import { useAppDispatch } from '@src/redux/store';
+import { currentUserThunk } from '@redux/auth/thunks';
+import { useAppSelector, useAppDispatch } from '@redux/store';
 
 import Layout from '../Layout/Layout';
 import ScreensPage from '../Screens/ScreensPage';
 import PublicRoute from '@routes/PublicRoute';
 import PrivateRoute from '@routes/PrivateRoute';
 // pages*
-import HomePage from '@pages/HomePage/HomePage';
-import AuthPage from '@pages/AuthPage/AuthPage';
-import WelcomePage from '@pages/WelcomePage/WelcomePage';
-import ErrorPage from '@pages/ErrorPage/ErrorPage';
+import HomePage from '@pages/HomePage';
+import AuthPage from '@pages/AuthPage';
+import WelcomePage from '@pages/WelcomePage';
+import NoFoundPage from '@pages/NoFoundPage';
 // modal**
 import Modal from '../Custom/CustomModal/Modal';
 import ModalContent from '../Custom/CustomModal/ModalContent';
@@ -23,7 +22,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const isVisible = useSelector(selectModalIsVisible);
+  const isVisible = useAppSelector(selectModalIsVisible);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -50,13 +49,14 @@ function App() {
             </Route>
           </Route>
 
-          <Route path="*" element={<ErrorPage />} />
+          <Route path="*" element={<NoFoundPage />} />
         </Route>
       </Routes>
 
       <Modal isVisible={isVisible} onClose={handleClose}>
         <ModalContent />
       </Modal>
+
       <ToastContainer
         position="top-center"
         autoClose={2000}

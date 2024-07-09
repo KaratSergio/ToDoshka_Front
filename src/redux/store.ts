@@ -19,7 +19,7 @@ import { taskReducer } from './tasks/taskSlice';
 import { modalReducer } from './modal/modalSlice';
 
 const persistConfig = {
-  key: 'root',
+  key: 'auth',
   storage,
   whitelist: ['token'],
 };

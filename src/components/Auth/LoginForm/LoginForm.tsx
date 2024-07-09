@@ -1,14 +1,21 @@
 import { useAppDispatch } from '@redux/store';
 import { loginThunk } from '@redux/auth/thunks';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm, SubmitHandler, Resolver } from 'react-hook-form';
 
 import { IFormInput } from '../types';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { UserSchema } from '@schemas/authSchemas';
+import { LoginSchema } from '@schemas/authSchemas';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit } = useForm<IFormInput>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    setError,
+  } = useForm<IFormInput>({
+    resolver: yupResolver(LoginSchema) as Resolver<IFormInput>,
+  });
 
   const onSubmit: SubmitHandler<IFormInput> = (data) => {
     dispatch(loginThunk(data));
@@ -22,20 +29,17 @@ const LoginForm = () => {
           autoComplete="on"
           placeholder="Enter your email"
           type="email"
-          {...register('email', {
-            required: 'Required field',
-          })}
+          {...register('email')}
         />
-        <div>
-          <input
-            className="w-[324px] py-4 px-4 border-2 rounded-lg"
-            autoComplete="on"
-            placeholder="Create a password"
-            {...register('password', {
-              required: 'Required field',
-            })}
-          />
-        </div>
+        {errors.email && <p className="text-red-500">{errors.email.message}</p>}
+        <input
+          className="w-[324px] py-4 px-4 border-2 rounded-lg"
+          autoComplete="on"
+          placeholder="Create a password"
+          type="password"
+          {...register('password')}
+        />
+        {errors.password && <p className="text-red-500">{errors.password.message}</p>}
         <div className="py-4 ps-4 rounded-lg bg-lime-200 w-[324px]">
           <button type="submit">Login Now</button>
         </div>

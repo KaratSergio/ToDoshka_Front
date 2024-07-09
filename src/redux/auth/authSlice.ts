@@ -1,8 +1,8 @@
-import { createSlice, PayloadAction, isAnyOf, SerializedError } from '@reduxjs/toolkit';
 import { initialAuthState } from './initialState';
-import { handlePending, handleRejected } from '../helpers/stateHelpers'; // імпортуємо універсальні хелпери
+import { createSlice, PayloadAction, isAnyOf } from '@reduxjs/toolkit';
+import { handlePending, handleRejected } from '../helpers/stateHelpers';
 
-import { AuthResponse, IAuthState, User } from './types';
+import { AuthResponse, User } from './types';
 
 import {
   currentUserThunk,
@@ -66,7 +66,7 @@ const authSlice = createSlice({
           sendHelpThunk.pending
           // changeThemeThunk.pending
         ),
-        (state) => handlePending(state) // викликаємо універсальну функцію для обробки pending
+        (state) => handlePending(state)
       )
       .addMatcher(
         isAnyOf(
@@ -78,7 +78,7 @@ const authSlice = createSlice({
           sendHelpThunk.rejected
           // changeThemeThunk.rejected
         ),
-        (state, action) => handleRejected(state, action) // викликаємо універсальну функцію для обробки rejected
+        (state, action) => handleRejected(state, action)
       );
   },
 });
