@@ -20,8 +20,8 @@ export const isRetina = () => {
 };
 
 export const getBackgroundUrl = (background: string | undefined) => {
-  if (background === 'default' || !background) {
-    return boardsData.find((item: BoardItem) => item.name === 'default-desk-1x')?.image ?? null;
+  if (!background) {
+    return null;
   } else {
     const device = setDevice();
     const ratio = isRetina();

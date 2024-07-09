@@ -6,7 +6,7 @@ import ballons from '@assets/img/small/ballons-small.png';
 import canyon from '@assets/img/small/canyon-small.png';
 import circle from '@assets/img/small/circle-small.png';
 import clouds from '@assets/img/small/clouds-small.png';
-import defalt from '@assets/img/small/defalt-small.png';
+import defaultImage from '@assets/img/small/default-small.png';
 import magnolia from '@assets/img/small/magnolia-small.png';
 import milkyway from '@assets/img/small/milkyway-small.png';
 import moon from '@assets/img/small/moon-small.png';
@@ -53,13 +53,6 @@ import cloudsTab1x from '@assets/img/tab/clouds-tab-1x.jpg';
 import cloudsTab2x from '@assets/img/tab/clouds-tab-2x.jpg';
 import cloudsDesk1x from '@assets/img/desk/clouds-desk-1x.jpg';
 import cloudsDesk2x from '@assets/img/desk/clouds-desk-2x.jpg';
-
-import defaltMob1x from '@assets/img/mob/defalt-mob-1x.jpg';
-import defaltMob2x from '@assets/img/mob/defalt-mob-2x.jpg';
-import defaltTab1x from '@assets/img/tab/defalt-tab-1x.jpg';
-import defaltTab2x from '@assets/img/tab/defalt-tab-2x.jpg';
-import defaltDesk1x from '@assets/img/desk/defalt-desk-1x.jpg';
-import defaltDesk2x from '@assets/img/desk/defalt-desk-2x.jpg';
 
 import magnoliaMob1x from '@assets/img/mob/magnolia-mob-1x.jpg';
 import magnoliaMob2x from '@assets/img/mob/magnolia-mob-2x.jpg';
@@ -167,13 +160,6 @@ export const boardsData = [
   { name: 'clouds-desk-1x.jpg', image: cloudsDesk1x },
   { name: 'clouds-desk-2x.jpg', image: cloudsDesk2x },
 
-  { name: 'defalt-mob-1x.jpg', image: defaltMob1x },
-  { name: 'defalt-mob-2x.jpg', image: defaltMob2x },
-  { name: 'defalt-tab-1x.jpg', image: defaltTab1x },
-  { name: 'defalt-tab-2x.jpg', image: defaltTab2x },
-  { name: 'defalt-desk-1x.jpg', image: defaltDesk1x },
-  { name: 'defalt-desk-2x.jpg', image: defaltDesk2x },
-
   { name: 'magnolia-mob-1x.jpg', image: magnoliaMob1x },
   { name: 'magnolia-mob-2x.jpg', image: magnoliaMob2x },
   { name: 'magnolia-tab-1x.jpg', image: magnoliaTab1x },
@@ -247,7 +233,7 @@ export const boardsData = [
 
 // Array small icon.png
 const dataIconsImg = [
-  { id: '0', image: defalt, name: 'default' },
+  { id: '0', image: defaultImage, name: 'default' },
   { id: '1', image: air, name: 'air' },
   { id: '2', image: ballons, name: 'ballons' },
   { id: '3', image: canyon, name: 'canyon' },
