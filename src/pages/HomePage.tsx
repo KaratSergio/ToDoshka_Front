@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useAppDispatch } from '@redux/store';
 import { getBoardsThunk } from '@redux/boards/thunks';
 
-import Header from '@components/Header/Header';
+// import Header from '@components/Header/Header';
 import Sidebar from '@components/Sidebar/Sidebar';
 import ScreensPage from '@components/Screens/ScreensPage';
 
@@ -19,7 +19,7 @@ const HomePage = () => {
         <Sidebar />
       </div>
       <div className="w-full">
-        <Header />
+        {/* <Header /> */}
         <ScreensPage />
       </div>
     </div>

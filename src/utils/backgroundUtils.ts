@@ -1,3 +1,10 @@
+import { boardsData } from './constants';
+
+interface BoardItem {
+  name: string;
+  image: string;
+}
+
 export const setDevice = () => {
   if (window.innerWidth <= 375) {
     return 'mob';
@@ -14,10 +21,12 @@ export const isRetina = () => {
 
 export const getBackgroundUrl = (background: string | undefined) => {
   if (background === 'default' || !background) {
-    return null;
+    return boardsData.find((item: BoardItem) => item.name === 'default-desk-1x')?.image ?? null;
   } else {
     const device = setDevice();
     const ratio = isRetina();
-    return `/assets/img/${background}-${device}-${ratio}.jpg`;
+    const imageName = `${background}-${device}-${ratio}.jpg`;
+    const imageUrl = boardsData.find((item: BoardItem) => item.name === imageName)?.image ?? null;
+    return imageUrl;
   }
 };
