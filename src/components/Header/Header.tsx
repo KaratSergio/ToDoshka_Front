@@ -1,5 +1,6 @@
 import Icon from '../Icon/Icon';
 import UserInfo from './UserInfo/UserInfo';
+import ThemeSwitcher from '../Theme/ThemeSwitcher';
 
 const Header = () => {
   return (
@@ -13,9 +14,7 @@ const Header = () => {
       </button>
       {/* {isOpen && <Navigation close={close} />} */}
       <div className="flex gap-14 items-center ml-auto">
-        <p>Theme</p>
-
-        {/* <Theme /> */}
+        <ThemeSwitcher />
         <UserInfo />
       </div>
     </header>

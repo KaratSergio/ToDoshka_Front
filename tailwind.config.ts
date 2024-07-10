@@ -1,4 +1,7 @@
 import type { Config } from 'tailwindcss';
+import colorsDark from './styles/themes/colorsDark';
+import colorsLight from './styles/themes/colorsLight';
+import colorsViolet from './styles/themes/colorsViolet';
 
 const config: Config = {
   content: [
@@ -9,9 +12,7 @@ const config: Config = {
   theme: {
     screens: {
       md: '768px',
-      // => @media (min-width: 768px) { ... }
       xl: '1440px',
-      // => @media (min-width: 1440px) { ... }
     },
     extend: {
       backgroundImage: {
@@ -31,6 +32,11 @@ const config: Config = {
       },
       height: {
         '24': '24px',
+      },
+      colors: {
+        dark: colorsDark,
+        light: colorsLight,
+        violet: colorsViolet,
       },
     },
   },
