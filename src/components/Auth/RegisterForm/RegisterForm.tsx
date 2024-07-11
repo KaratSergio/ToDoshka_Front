@@ -47,8 +47,10 @@ const RegisterForm = () => {
           {...register('password', { required: 'Required field' })}
           error={errors.password?.message}
         />
-        <div className="py-4 ps-4 rounded-lg bg-lime-200 w-[324px]">
-          <button type="submit">Register Now</button>
+        <div className="rounded-lg bg-lime-200 w-full">
+          <button className="w-full h-[49px]" type="submit">
+            Register Now
+          </button>
         </div>
       </div>
     </form>

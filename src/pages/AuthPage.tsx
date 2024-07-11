@@ -8,11 +8,7 @@ import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import type { ReactTabsFunctionComponent, TabProps } from 'react-tabs';
 
 const CustomTab: ReactTabsFunctionComponent<TabProps> = ({ children, ...otherProps }) => (
-  <Tab
-    {...otherProps}
-    className="px-4 py-2 cursor-pointer border-b-2"
-    selectedClassName="border-blue-500 text-blue-500"
-  >
+  <Tab {...otherProps} className="mr-[14px] cursor-pointer" selectedClassName="text-white">
     <p className="text-lg">{children}</p>
   </Tab>
 );
@@ -34,20 +30,21 @@ const AuthPage = () => {
   }, [location]);
 
   return (
-    <section className="p-4">
-      <Tabs selectedIndex={activeTabIndex} onSelect={(index) => setActiveTabIndex(index)}>
-        <TabList className="flex justify-center mb-4 border-b-2">
-          <CustomTab>Register</CustomTab>
-          <CustomTab>Login</CustomTab>
-        </TabList>
-
-        <TabPanel>
-          <RegisterForm />
-        </TabPanel>
-        <TabPanel>
-          <LoginForm />
-        </TabPanel>
-      </Tabs>
+    <section className="h-screen w-screen flex justify-center items-center bg-custom-gradient bg-no-repeat">
+      <div className="bg-slate-600 p-10 w-full max-w-[424px] rounded-lg">
+        <Tabs selectedIndex={activeTabIndex} onSelect={(index) => setActiveTabIndex(index)}>
+          <TabList className="flex mb-10">
+            <CustomTab>Registration</CustomTab>
+            <CustomTab>Log in</CustomTab>
+          </TabList>
+          <TabPanel>
+            <RegisterForm />
+          </TabPanel>
+          <TabPanel>
+            <LoginForm />
+          </TabPanel>
+        </Tabs>
+      </div>
     </section>
   );
 };
