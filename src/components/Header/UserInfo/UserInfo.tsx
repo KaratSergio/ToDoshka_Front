@@ -11,7 +11,12 @@ const UserInfo = () => {
   const user = useAppSelector(selectUser);
   return (
     <div>
-      <button onClick={handleClick} className="flex gap-2" type="button" aria-label="user-profile">
+      <button
+        onClick={handleClick}
+        className="flex items-center gap-2"
+        type="button"
+        aria-label="user-profile"
+      >
         {user.name}
         {user.avatarURL ? (
           <div>

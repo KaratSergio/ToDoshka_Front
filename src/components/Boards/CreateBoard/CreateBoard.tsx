@@ -1,22 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
+
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
-import { yupResolver } from '@hookform/resolvers/yup';
 
+import { yupResolver } from '@hookform/resolvers/yup';
 import { addBoardSchema } from '@schemas/addBoardSchemas';
+
+import { closeModal } from '@redux/modal/modalSlice';
+import { selectAllBoards } from '@redux/boards/selectors';
 import { useAppDispatch, useAppSelector } from '@redux/store';
 import { addBoardThunk, getBoardsThunk } from '@redux/boards/thunks';
-import { selectAllBoards } from '@redux/boards/selectors';
 
 import Icons from './Icons';
 import Backgrounds from './Backgrounds';
+
 import Button from '@components/Custom/CustomButton/Button';
 import Input from '@components/Custom/CustomInput/Input';
-
 import Icon from '@components/Icon/Icon';
+
 import { BoardData } from '../types';
-import { closeModal } from '@redux/modal/modalSlice';
 import { useSelectionHandlers } from '@hooks/useSelectionHandlers';
 
 const CreateBoard: React.FC = () => {
@@ -34,10 +37,6 @@ const CreateBoard: React.FC = () => {
   const dispatch = useAppDispatch();
   const existingBoards = useAppSelector(selectAllBoards);
 
-  console.log('====================================');
-  console.log('CreateBoard', existingBoards);
-  console.log('====================================');
-
   const {
     selectedIcon,
     selectedBackgroundName,
@@ -48,51 +47,54 @@ const CreateBoard: React.FC = () => {
 
   useEffect(() => {
     dispatch(getBoardsThunk());
-  }, []);
+  }, [dispatch]);
 
-  const handleCreateBoard = (data: BoardData) => {
-    const { title } = data;
-    const isExist = existingBoards.some((item) => item.title.trim() === title.trim());
+  const handleCreateBoard = useCallback(
+    (data: BoardData) => {
+      const { title } = data;
+      const isExist = existingBoards.some((item) => item.title.trim() === title.trim());
 
-    if (isExist) {
-      toast.error(`${data.title} already exists!`, {
-        theme: 'colored',
-        autoClose: 2500,
-      });
-      return;
-    }
-
-    if (selectedIcon) {
-      data.icon = selectedIcon;
-    }
-    if (selectedBackgroundName) {
-      data.background = selectedBackgroundName;
-    }
-
-    dispatch(addBoardThunk(data))
-      .then((action) => {
-        if (action.payload && '_id' in action.payload && action.payload._id) {
-          dispatch(getBoardsThunk());
-          dispatch(closeModal());
-
-          navigate(`/home/board/${action.payload._id}`);
-        } else {
-          console.error('Invalid response from the server:', action);
-          throw new Error('Failed to extract _id from the response');
-        }
-
-        setValue('title', '');
-        setValue('icon', undefined);
-        setValue('background', undefined);
-      })
-      .catch((error: any) => {
-        console.error('Failed to create board:', error);
-        toast.error('Failed to create board. Please try again later.', {
+      if (isExist) {
+        toast.error(`${data.title} already exists!`, {
           theme: 'colored',
           autoClose: 2500,
         });
-      });
-  };
+        return;
+      }
+
+      if (selectedIcon) {
+        data.icon = selectedIcon;
+      }
+      if (selectedBackgroundName) {
+        data.background = selectedBackgroundName;
+      }
+
+      dispatch(addBoardThunk(data))
+        .then((action) => {
+          if (action.payload && '_id' in action.payload && action.payload._id) {
+            dispatch(getBoardsThunk());
+            dispatch(closeModal());
+
+            navigate(`/home/board/${action.payload._id}`);
+          } else {
+            console.error('Invalid response from the server:', action);
+            throw new Error('Failed to extract _id from the response');
+          }
+
+          setValue('title', '');
+          setValue('icon', undefined);
+          setValue('background', undefined);
+        })
+        .catch((error: any) => {
+          console.error('Failed to create board:', error);
+          toast.error('Failed to create board. Please try again later.', {
+            theme: 'colored',
+            autoClose: 2500,
+          });
+        });
+    },
+    [dispatch, existingBoards, navigate, selectedIcon, selectedBackgroundName, setValue]
+  );
 
   return (
     <div>

@@ -1,26 +1,37 @@
-import { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useAppSelector, useAppDispatch } from '@redux/store';
-import { selectAllBoards, selectBoardById } from '@redux/boards/selectors';
+import { getBoardsThunk, getBoardById } from '@redux/boards/thunks';
+import { selectAllBoards, selectBoardById, selectIsBoardsLoading } from '@redux/boards/selectors';
 
+import { getBackgroundUrl } from '@utils/backgroundUtils';
 import Header from '@components/Header/Header';
 import Board from '@components/Screens/Content/Board';
 import DefaultBoard from '@components/Screens/Content/DefaultBoard';
 
-import { getBoardById } from '@redux/boards/thunks';
-import { getBackgroundUrl } from '@utils/backgroundUtils';
-
-const ScreensPage = () => {
+const ScreensPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const boards = useAppSelector(selectAllBoards);
   const board = useAppSelector(selectBoardById);
+  const isLoading = useAppSelector(selectIsBoardsLoading);
 
   useEffect(() => {
-    if (board?._id) {
-      dispatch(getBoardById(board._id));
-    }
-  }, [dispatch, board._id]);
+    dispatch(getBoardsThunk());
+  }, [dispatch]);
 
-  const backgroundUrl = getBackgroundUrl(board.background);
+  useEffect(() => {
+    if (boards.length > 0) {
+      const lastBoardId = boards[boards.length - 1]._id;
+      if (lastBoardId && (!board || board._id !== lastBoardId)) {
+        dispatch(getBoardById(lastBoardId));
+      }
+    }
+  }, [boards, board, dispatch]);
+
+  const backgroundUrl = useMemo(() => (board ? getBackgroundUrl(board.background) : ''), [board]);
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div
@@ -34,8 +45,8 @@ const ScreensPage = () => {
       }}
     >
       <Header />
-      <div className="bg-yellow-100">
-        <h2>{board.title}</h2>
+      <div>
+        <h2 className="pl-5 bg-slate-500">{board?.title}</h2>
         <div className="w-full">{boards.length > 0 ? <Board /> : <DefaultBoard />}</div>
       </div>
     </div>
