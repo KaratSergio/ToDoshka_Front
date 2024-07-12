@@ -19,3 +19,7 @@ export interface RenderIconsProps {
   selectedIcon: string | undefined;
   handleIconSelect: (icon: string) => void;
 }
+
+export interface BoardsListProps {
+  onBoardClick: (boardId: string) => void;
+}

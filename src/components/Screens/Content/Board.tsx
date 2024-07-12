@@ -1,23 +1,21 @@
 import { useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '@redux/store';
+
 import { getBoardById } from '@redux/boards/thunks';
 import { selectAllBoards } from '@redux/boards/selectors';
 import Button from '../../Custom/CustomButton/Button';
 
-const Board = () => {
-  const { boardId } = useParams<{ boardId: string }>();
+const Board: React.FC = () => {
   const dispatch = useAppDispatch();
-  const navigate = useNavigate();
   const boards = useAppSelector(selectAllBoards);
+  const { boardId } = useParams<{ boardId: string }>();
 
   useEffect(() => {
     if (boardId) {
       const board = boards.find((board) => board._id === boardId);
       if (!board) {
-        dispatch(getBoardById(boardId)).catch((error) => {
-          console.error('Failed to fetch board:', error);
-        });
+        dispatch(getBoardById(boardId));
       }
     }
   }, [dispatch, boardId, boards]);

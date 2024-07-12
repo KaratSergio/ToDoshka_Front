@@ -73,17 +73,18 @@ const CreateBoard: React.FC = () => {
         .then((action) => {
           if (action.payload && '_id' in action.payload && action.payload._id) {
             dispatch(getBoardsThunk());
+
             dispatch(closeModal());
 
             navigate(`/home/board/${action.payload._id}`);
+
+            setValue('title', '');
+            setValue('icon', undefined);
+            setValue('background', undefined);
           } else {
             console.error('Invalid response from the server:', action);
             throw new Error('Failed to extract _id from the response');
           }
-
-          setValue('title', '');
-          setValue('icon', undefined);
-          setValue('background', undefined);
         })
         .catch((error: any) => {
           console.error('Failed to create board:', error);

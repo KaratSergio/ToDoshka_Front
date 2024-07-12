@@ -14,7 +14,7 @@ const WelcomePage = () => {
           </picture>
           <div className="flex items-center py-6">
             <Icon id="logo" width="w-12" height="h-12" />
-            <p className="font-semibold text-4xl text-bg-color">Task Pro</p>
+            <p className="ml-[14px] font-semibold text-4xl text-bg-color">Task Pro</p>
           </div>
         </div>
         <p className="text-sm text-center text-bg-color font-normal">
@@ -24,7 +24,7 @@ const WelcomePage = () => {
         <div className="flex justify-center flex-col items-center my-10 gap-2">
           <NavLink to="/auth/register?tab=register">
             <button
-              className="w-[344px] text-slate-50 text-sm bg-gray-500 hover:bg-black py-4 rounded-lg"
+              className="w-[344px] text-slate-50 text-sm hover:bg-zinc-900 bg-black py-4 rounded-lg"
               type="button"
               aria-label="Registration"
               autoFocus
@@ -34,7 +34,7 @@ const WelcomePage = () => {
           </NavLink>
           <NavLink to="/auth/login?tab=login">
             <button
-              className="w-[344px] text-slate-50 text-sm bg-gray-500 hover:bg-black py-4 rounded-lg"
+              className="w-[344px] text-black text-sm  py-4 rounded-lg"
               type="button"
               aria-label="Log In"
             >

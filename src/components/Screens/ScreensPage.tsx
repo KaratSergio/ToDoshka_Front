@@ -1,9 +1,10 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '@redux/store';
 import { getBoardsThunk, getBoardById } from '@redux/boards/thunks';
 import { selectAllBoards, selectBoardById, selectIsBoardsLoading } from '@redux/boards/selectors';
 
 import { getBackgroundUrl } from '@utils/backgroundUtils';
+
 import Header from '@components/Header/Header';
 import Board from '@components/Screens/Content/Board';
 import DefaultBoard from '@components/Screens/Content/DefaultBoard';
@@ -14,6 +15,8 @@ const ScreensPage: React.FC = () => {
   const board = useAppSelector(selectBoardById);
   const isLoading = useAppSelector(selectIsBoardsLoading);
 
+  const [isInitialLoad, setIsInitialLoad] = useState(true);
+
   useEffect(() => {
     dispatch(getBoardsThunk());
   }, [dispatch]);
@@ -21,15 +24,16 @@ const ScreensPage: React.FC = () => {
   useEffect(() => {
     if (boards.length > 0) {
       const lastBoardId = boards[boards.length - 1]._id;
-      if (lastBoardId && (!board || board._id !== lastBoardId)) {
+      if (lastBoardId) {
         dispatch(getBoardById(lastBoardId));
       }
+      setIsInitialLoad(false);
     }
-  }, [boards, board, dispatch]);
+  }, [boards, dispatch]);
 
   const backgroundUrl = useMemo(() => (board ? getBackgroundUrl(board.background) : ''), [board]);
 
-  if (isLoading) {
+  if (isLoading || isInitialLoad) {
     return <div>Loading...</div>;
   }
 
