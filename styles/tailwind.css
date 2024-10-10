@@ -36,25 +36,6 @@
   --font-regular: 'PoppinsRegular', sans-serif;
   --font-medium: 'PoppinsMedium', sans-serif;
   --font-semibold: 'PoppinsSemibold', sans-serif;
-
-  /* Light theme colors */
-  --bg-header: theme(colors.light.bg-header);
-  --color-scroll-tracker-g: theme(colors.light.color-scroll-tracker-g);
-  --color-scroll-g: theme(colors.light.color-scroll-g);
-}
-
-.dark {
-  /* Dark theme colors */
-  --bg-header: theme(colors.dark.bg-header);
-  --color-scroll-tracker-g: theme(colors.dark.color-scroll-tracker-g);
-  --color-scroll-g: theme(colors.dark.color-scroll-g);
-}
-
-.violet {
-  /* Violet theme colors */
-  --bg-header: theme(colors.violet.bg-header);
-  --color-scroll-tracker-g: theme(colors.violet.color-scroll-tracker-g);
-  --color-scroll-g: theme(colors.violet.color-scroll-g);
 }
 
 /* General styles */

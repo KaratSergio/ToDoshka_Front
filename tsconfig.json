@@ -26,7 +26,8 @@
       "@schemas/*": ["src/schemas/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"],
-      "@routes/*": ["src/routes/*"]
+      "@routes/*": ["src/routes/*"],
+      "@styles/*": ["styles/*"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "src/main.tsx"],

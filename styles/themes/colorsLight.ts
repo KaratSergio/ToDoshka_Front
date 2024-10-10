@@ -1,10 +1,13 @@
 const colorsLight = {
   'bg-header': '#fcfcfc',
+  'bg-sidebar': 'rgb(203 213 225)',
+  'color-font': '#161616',
+
+  // не відфільтроване
   'color-scroll-tracker-g': '#ffffff',
   'color-scroll-g': '#e8e8e8',
   'color-scroll-tracker-v': '#e8e8e8',
   'color-scroll-v': 'rgba(22, 22, 22, 0.1)',
-  'color-font': '#161616',
   'bg-color-body': '#f6f6f7',
   'bg-color': '#ffffff',
   'bg-theme': '#fcfcfc',
@@ -21,7 +24,6 @@ const colorsLight = {
   'scroll-track': 'rgba(236, 237, 253, 0.8)',
   'scroll-thumb': 'rgba(22, 22, 22, 0.5)',
   'bg-button-plus': '#b8bcfd',
-  'bg-sidebar': '#fff',
   'sb-icon-stroke': '#121212',
   'bg-help': 'rgba(236, 237, 253, 0.4)',
   'bg-image-logo': 'url(assets/img/logo/logo-light.png)',

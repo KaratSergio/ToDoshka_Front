@@ -1,10 +1,13 @@
 const colorsViolet = {
-  'bg-header': '#4b3b5c',
+  'bg-header': '#565168',
+  'bg-sidebar': '#4b3b5c',
+  'color-font': '#fff',
+
+  // не відфільтроване
   'color-scroll-tracker-g': '#4b3b5c',
   'color-scroll-g': 'rgba(255, 255, 255, 0.1)',
   'color-scroll-tracker-v': 'rgba(255, 255, 255, 0.08)',
   'color-scroll-v': '#4b3b5c',
-  'color-font': '#fff',
   'bg-color-body': '#4b3b5c',
   'bg-color': '#4b3b5c',
   'bg-theme': '#4b3b5c',
@@ -20,7 +23,6 @@ const colorsViolet = {
   'color-icon-grey': 'rgba(255, 255, 255, 0.5)',
   'scroll-track': 'rgba(236, 237, 253, 0.6)',
   'scroll-thumb': 'rgba(22, 22, 22, 0.5)',
-  'bg-sidebar': '#4b3b5c',
   'sb-icon-stroke': '#121212',
   'bg-help': '#4b3b5c',
   'bg-image-logo': 'url(assets/img/logo/logo-light.png)',

@@ -50,7 +50,9 @@ const ScreensPage: React.FC = () => {
     >
       <Header />
       <div>
-        <h2 className="pl-5 bg-slate-500">{board?.title}</h2>
+        <h2 className="pl-5 bg-[var(--bg-header)] text-[var(--color-font)] border-t tracking-wider">
+          {board?.title}
+        </h2>
         <div className="w-full">{boards.length > 0 ? <Board /> : <DefaultBoard />}</div>
       </div>
     </div>
