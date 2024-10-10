@@ -1,4 +1,3 @@
-import { PersistPartial } from 'redux-persist/lib/persistReducer';
 import { IBoardState } from '../boards/types';
 import { IColumnState } from '../columns/types';
 import { IModalState } from '../modal/types';
@@ -54,8 +53,8 @@ export interface IAppState {
 
 export interface RootState {
   auth: IAuthState;
-  boards: IBoardState & PersistPartial;
-  // columns: IColumnState & PersistPartial;
-  // tasks: ITaskState & PersistPartial;
+  boards: IBoardState;
+  // columns: IColumnState;
+  // tasks: ITaskState;
   // modal: IModalState;
 }

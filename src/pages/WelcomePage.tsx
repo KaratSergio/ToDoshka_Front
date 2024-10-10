@@ -1,9 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useAppSelector } from '@redux/store';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { selectToken } from '@redux/auth/selectors';
 import Start2x from '@assets/img/png/Start2x.png';
 import Start1x from '@assets/img/png/Start1x.png';
 import Icon from '@components/Icon/Icon';
 
 const WelcomePage = () => {
+  const navigate = useNavigate();
+  const token = useAppSelector(selectToken);
+
+  useEffect(() => {
+    if (token) {
+      navigate('/home');
+    }
+  }, [token, navigate]);
+
   return (
     <div className="h-screen w-screen flex justify-center items-center bg-custom-gradient bg-no-repeat">
       <div className="w-full max-w-[473px] flex justify-center flex-col">

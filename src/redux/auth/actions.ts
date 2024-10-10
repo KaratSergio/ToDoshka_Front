@@ -35,13 +35,8 @@ export const logout = async (): Promise<{ message: string }> => {
 
 export const currentUser = async (token: string): Promise<User> => {
   setAccessToken(token);
-  try {
-    const { data }: AxiosResponse<User> = await $instance.get('users/current');
-    return data;
-  } catch (error) {
-    clearAccessToken();
-    throw error;
-  }
+  const { data }: AxiosResponse<User> = await $instance.get('users/current');
+  return data;
 };
 
 export const updateUser = async (userData: FormData): Promise<User> => {

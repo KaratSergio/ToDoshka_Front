@@ -25,16 +25,13 @@ const persistConfig = {
 };
 
 const persistedAuthReducer = persistReducer(persistConfig, authReducer);
-const persistedBoardReducer = persistReducer(persistConfig, boardReducer);
-const persistedColumnReducer = persistReducer(persistConfig, columnReducer);
-const persistedTaskReducer = persistReducer(persistConfig, taskReducer);
 
 const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    boards: persistedBoardReducer,
-    columns: persistedColumnReducer,
-    tasks: persistedTaskReducer,
+    boards: boardReducer,
+    columns: columnReducer,
+    tasks: taskReducer,
     modal: modalReducer,
   },
   middleware: (getDefaultMiddleware) =>
