@@ -11,7 +11,9 @@ const WelcomePage = () => {
   const token = useAppSelector(selectToken);
 
   useEffect(() => {
-    if (token) {
+    if (token === 'login') {
+      navigate('/');
+    } else {
       navigate('/home');
     }
   }, [token, navigate]);

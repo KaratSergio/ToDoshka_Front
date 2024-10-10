@@ -6,6 +6,7 @@ import { IFormInput } from '../types';
 import Input from '@components/Custom/CustomInput/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { RegisterSchema } from '@schemas/authSchemas';
+import GoogleButton from '../GoogleButton';
 
 const RegisterForm = () => {
   const dispatch = useAppDispatch();
@@ -53,6 +54,8 @@ const RegisterForm = () => {
           </button>
         </div>
       </div>
+
+      <GoogleButton />
     </form>
   );
 };

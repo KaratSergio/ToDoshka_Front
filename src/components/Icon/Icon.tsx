@@ -8,9 +8,10 @@ const Icon: React.FC<IconProps> = ({
   height,
   color = 'fill-transparent',
   strokeColor = 'stroke-black',
+  className = '',
 }) => {
   return (
-    <svg className={`${width} ${height} ${color} ${strokeColor}`}>
+    <svg className={`${width} ${height} ${color} ${strokeColor} ${className}`}>
       <use href={`${sprite}#${id}`} />
     </svg>
   );

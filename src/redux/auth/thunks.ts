@@ -4,27 +4,21 @@ import thunkMiddleware from '../helpers/thunkMiddleware';
 
 export const registerThunk = thunkMiddleware<AuthResponse, AuthBody>(
   'user/register',
-  async (data, thunkAPI) => {
+  async (data, _) => {
     const res = await register(data);
     return res;
   }
 );
 
-export const loginThunk = thunkMiddleware<AuthResponse, AuthBody>(
-  'user/login',
-  async (data, thunkAPI) => {
-    const res = await login(data);
-    return res;
-  }
-);
+export const loginThunk = thunkMiddleware<AuthResponse, AuthBody>('user/login', async (data, _) => {
+  const res = await login(data);
+  return res;
+});
 
-export const logoutThunk = thunkMiddleware<{ message: string }, void>(
-  'user/logout',
-  async (_, thunkAPI) => {
-    const res = await logout();
-    return res;
-  }
-);
+export const logoutThunk = thunkMiddleware<{ message: string }, void>('user/logout', async () => {
+  const res = await logout();
+  return res;
+});
 
 export const currentUserThunk = thunkMiddleware<User>(
   'auth/current',
@@ -37,7 +31,7 @@ export const currentUserThunk = thunkMiddleware<User>(
     condition: (_, { getState }) => {
       const { auth } = getState();
       if (!auth.token) {
-        return false;
+        return !!auth.token;
       }
     },
   }
@@ -52,7 +46,7 @@ export const updateUserThunk = thunkMiddleware<User, FormData>(
   }
 );
 
-export const sendHelpThunk = thunkMiddleware<any, any>('auth/needHelp', async (data, thunkAPI) => {
+export const sendHelpThunk = thunkMiddleware<any, any>('auth/needHelp', async (data, _) => {
   const res = await sendHelp(data);
   return res;
 });

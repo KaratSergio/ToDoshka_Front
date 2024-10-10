@@ -4,7 +4,6 @@ import { CustomThunkConfig } from '../helpers/types';
 import thunkMiddleware from '../helpers/thunkMiddleware';
 import { getAllBoards, addBoard, getBoard, editBoard, deleteBoard } from './actions';
 
-
 export const getBoardsThunk = thunkMiddleware<Board[], void, CustomThunkConfig>(
   'boards/getBoard',
   async (_, thunkAPI) => {
@@ -34,7 +33,7 @@ export const editBoardThunk = thunkMiddleware<
   Board,
   { token: string; id: string; board: Board },
   CustomThunkConfig
->('boards/editBoard', async ({ token, id, board }, thunkAPI) => {
+>('boards/editBoard', async ({ token, id, board }, _) => {
   return await editBoard(token, id, board);
 });
 
@@ -42,7 +41,7 @@ export const deleteBoardThunk = thunkMiddleware<
   string,
   { token: string; id: string },
   CustomThunkConfig
->('boards/deleteBoard', async (params, thunkAPI) => {
+>('boards/deleteBoard', async (params, _) => {
   const { token, id } = params;
   await deleteBoard(token, id);
   return id;

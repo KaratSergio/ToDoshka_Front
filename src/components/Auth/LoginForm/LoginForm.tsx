@@ -6,6 +6,7 @@ import { IFormInput } from '../types';
 import Input from '@components/Custom/CustomInput/Input';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoginSchema } from '@schemas/authSchemas';
+import GoogleButton from '../GoogleButton';
 
 const LoginForm = () => {
   const dispatch = useAppDispatch();
@@ -35,6 +36,8 @@ const LoginForm = () => {
           </button>
         </div>
       </div>
+
+      <GoogleButton />
     </form>
   );
 };
