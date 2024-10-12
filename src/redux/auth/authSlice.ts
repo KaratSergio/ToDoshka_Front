@@ -11,6 +11,7 @@ import {
   registerThunk,
   sendHelpThunk,
   updateUserThunk,
+  changeThemeThunk,
 } from './thunks';
 
 const authSlice = createSlice({
@@ -56,6 +57,9 @@ const authSlice = createSlice({
         state.isLoading = false;
         // Додаткові дії після успішного виконання sendHelpThunk
       })
+      .addCase(changeThemeThunk.fulfilled, (state, action: PayloadAction<any>) => {
+        state.user.theme = action.payload;
+      })
       .addMatcher(
         isAnyOf(
           registerThunk.pending,
@@ -63,8 +67,8 @@ const authSlice = createSlice({
           logoutThunk.pending,
           currentUserThunk.pending,
           updateUserThunk.pending,
-          sendHelpThunk.pending
-          // changeThemeThunk.pending
+          sendHelpThunk.pending,
+          changeThemeThunk.pending
         ),
         (state) => handlePending(state)
       )
@@ -75,8 +79,8 @@ const authSlice = createSlice({
           logoutThunk.rejected,
           currentUserThunk.rejected,
           updateUserThunk.rejected,
-          sendHelpThunk.rejected
-          // changeThemeThunk.rejected
+          sendHelpThunk.rejected,
+          changeThemeThunk.rejected
         ),
         (state, action) => handleRejected(state, action)
       );

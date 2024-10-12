@@ -43,8 +43,12 @@ export const updateUser = async (userData: FormData): Promise<User> => {
   const { data }: AxiosResponse<User> = await $instance.put('users/update', userData);
   return data;
 };
-
+// =======================SEND-MAIL-SERVICE=========================
 export const sendHelp = async (body: HelpBody) => {
   const { data } = await $instance.post('users/help', body);
   return data;
+};
+// =======================CHANGE-USER-THEME=========================
+export const changeTheme = async (theme: string) => {
+  await $instance.patch('users/theme', { theme });
 };

@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import useTheme from '@hooks/useTheme';
+import { changeThemeThunk } from '@redux/auth/thunks';
+import { useAppDispatch } from '@redux/store';
 
 const ThemeSwitcher = () => {
   const { theme, toggleTheme } = useTheme();
   const [showMenu, setShowMenu] = useState(false);
+  const dispatch = useAppDispatch();
 
   const toggleMenu = () => {
     setShowMenu((prev) => !prev);
@@ -11,6 +14,7 @@ const ThemeSwitcher = () => {
 
   const selectTheme = (selectedTheme: string) => {
     toggleTheme(selectedTheme);
+    dispatch(changeThemeThunk(selectedTheme));
     setShowMenu(false);
   };
 

@@ -1,4 +1,4 @@
-import { currentUser, login, logout, register, sendHelp, updateUser } from './actions';
+import { currentUser, login, logout, register, sendHelp, updateUser, changeTheme } from './actions';
 import { AuthBody, AuthResponse, User } from './types';
 import thunkMiddleware from '../helpers/thunkMiddleware';
 
@@ -51,14 +51,9 @@ export const sendHelpThunk = thunkMiddleware<any, any>('auth/needHelp', async (d
   return res;
 });
 
-// export const changeThemeThunk = createAsyncThunk<string, string>(
-//   "auth/theme",
-//   async (data, thunkAPI) => {
-//     try {
-//       const res = await changeThemeThunk(data);
-//       return res.data.theme;
-//     } catch (error: any) {
-//       return thunkAPI.rejectWithValue(error.message);
-//     }
-//   }
-// );
+export const changeThemeThunk = thunkMiddleware<void, string>(
+  'auth/theme',
+  async (theme: string, _) => {
+    await changeTheme(theme);
+  }
+);

@@ -12,3 +12,5 @@ export const selectIsLoading = createSelector(selectAuthState, (authState) => au
 export const selectIsLogin = createSelector(selectAuthState, (authState) => authState.isLogin);
 
 export const selectError = createSelector(selectAuthState, (authState) => authState.error);
+
+export const selectUserTheme = createSelector(selectAuthState, (authState) => authState.user.theme);
