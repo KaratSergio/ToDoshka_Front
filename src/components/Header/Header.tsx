@@ -12,7 +12,6 @@ const Header = () => {
       >
         <Icon id="menu" strokeColor="stroke-black" color="fill-black" />
       </button>
-      {/* {isOpen && <Navigation close={close} />} */}
       <div className="flex gap-14 items-center ml-auto">
         <ThemeSwitcher />
         <UserInfo />
