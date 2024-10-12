@@ -1,3 +1,5 @@
+import { Board } from '@redux/boards/types';
+
 export interface BoardData {
   title: string;
   icon?: string | undefined;
@@ -21,5 +23,10 @@ export interface RenderIconsProps {
 }
 
 export interface BoardsListProps {
+  onBoardClick: (boardId: string) => void;
+}
+
+export interface BoardItemProps {
+  board: Board;
   onBoardClick: (boardId: string) => void;
 }

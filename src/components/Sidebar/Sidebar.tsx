@@ -26,21 +26,21 @@ const Sidebar: React.FC<SidebarProps> = ({ onBoardSelect }) => {
   };
 
   return (
-    <div className="flex flex-col pl-6 py-6 w-260 text-[var(--color-font)] bg-[var(--bg-sidebar)] h-screen justify-between">
+    <div className="flex flex-col py-6 w-260 text-[var(--color-font)] bg-[var(--bg-sidebar)] h-screen justify-between">
       <div>
-        <p>Task Pro</p>
-        <p className="mt-[60px]">Total boards: {boards.length}</p>
-        <div className="flex justify-between mt-2 mr-[14px] py-[14px] items-center border-t-[1px] border-b-[1px]">
+        <p className="pl-4 w-28 bg-gray-500 rounded-r-xl">Task Pro</p>
+        <p className="mt-[70px] mb-2 pl-6 text-sm">My boards: {boards.length}</p>
+        <div className="flex justify-between mx-6 py-[14px] items-center border-t-[1px] border-b-[1px]">
           <p>Create a new board</p>
-          <button className="w-10 h-9 bg-slate-500" onClick={handleOpenModal}>
+          <button className="w-10 h-9 bg-slate-500 rounded" onClick={handleOpenModal}>
             +
           </button>
         </div>
         <BoardsList onBoardClick={handleBoardClick} />
       </div>
-      <div>
+      <div className="ml-6">
         <button onClick={handleLogout} className="flex gap-1 font-semibold tracking-widest">
-          <Icon id="logout" width="w-5" height="h-5" />
+          <Icon id="logout" width="w-6" height="h-6" />
           Exit
         </button>
       </div>
