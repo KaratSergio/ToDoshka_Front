@@ -3,9 +3,10 @@ import { selectAllBoards } from '@redux/boards/selectors';
 import { getBoardById } from '@redux/boards/thunks';
 import { openModal } from '@redux/modal/modalSlice';
 import { logoutThunk } from '@src/redux/auth/thunks';
-import Icon from '../Icon/Icon';
 
-import BoardsList from '../Boards/BoardsList';
+import Icon from '../Icon/Icon';
+import AddButton from '../Custom/CustomButton/AddButton';
+import BoardsList from './BoardsList/BoardsList';
 import { SidebarProps } from './types';
 
 const Sidebar: React.FC<SidebarProps> = ({ onBoardSelect }) => {
@@ -32,9 +33,14 @@ const Sidebar: React.FC<SidebarProps> = ({ onBoardSelect }) => {
         <p className="mt-[70px] mb-2 pl-6 text-sm">My boards: {boards.length}</p>
         <div className="flex justify-between mx-6 py-[14px] items-center border-t-[1px] border-b-[1px]">
           <p>Create a new board</p>
-          <button className="w-10 h-9 bg-slate-500 rounded" onClick={handleOpenModal}>
-            +
-          </button>
+          <AddButton
+            onClick={handleOpenModal}
+            className="w-10 h-9 bg-lime-200"
+            iconStyles={{
+              color: 'stroke-black',
+              size: 'w-5 h-5',
+            }}
+          />
         </div>
         <BoardsList onBoardClick={handleBoardClick} />
       </div>

@@ -5,4 +5,5 @@ export interface IconProps {
   color?: string;
   strokeColor?: string;
   className?: string;
+  size?: string;
 }

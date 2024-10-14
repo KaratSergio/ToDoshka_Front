@@ -4,6 +4,7 @@ import sprite from '@assets/svg/sprite.svg';
 
 const Icon: React.FC<IconProps> = ({
   id,
+  size,
   width,
   height,
   color = 'fill-transparent',
@@ -11,7 +12,7 @@ const Icon: React.FC<IconProps> = ({
   className = '',
 }) => {
   return (
-    <svg className={`${width} ${height} ${color} ${strokeColor} ${className}`}>
+    <svg className={`${size ? size : `${width} ${height}`} ${color} ${strokeColor} ${className}`}>
       <use href={`${sprite}#${id}`} />
     </svg>
   );

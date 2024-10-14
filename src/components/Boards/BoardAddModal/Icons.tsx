@@ -13,16 +13,10 @@ const Icons: React.FC<RenderIconsProps> = ({ selectedIcon, handleIconSelect }) =
             key={icon}
             onClick={() => handleIconSelect(icon)}
             className={`flex items-center w-[18px] h-[18px] cursor-pointer ${
-              selectedIcon === icon ? 'border border-blue-500' : ''
+              selectedIcon === icon ? 'border border-gray-900' : ''
             }`}
           >
-            <Icon
-              id={icon}
-              width="w-[18px]"
-              height="h-[18px]"
-              color="fill-transparent"
-              strokeColor="stroke-black"
-            />
+            <Icon id={icon} width="w-[18px]" height="h-[18px]" color="fill-transparent" strokeColor="stroke-black" />
           </div>
         ))}
       </div>

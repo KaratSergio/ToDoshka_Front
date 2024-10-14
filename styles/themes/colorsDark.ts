@@ -1,5 +1,5 @@
 const colorsDark = {
-  'bg-header': '#323841',
+  'bg-header': '#282e3c',
   'bg-sidebar': '#252B3C',
   'color-font': 'bisque',
 

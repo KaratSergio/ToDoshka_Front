@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@redux/store';
 import { selectAllBoards, selectIsBoardsLoading } from '@redux/boards/selectors';
 
 import BoardItem from './BoardItem';
-import { BoardsListProps } from './types';
+import { BoardsListProps } from '../types';
 
 const BoardsList: React.FC<BoardsListProps> = ({ onBoardClick }) => {
   const dispatch = useAppDispatch();

@@ -15,14 +15,14 @@ import { addBoardThunk, getBoardsThunk } from '@redux/boards/thunks';
 import Icons from './Icons';
 import Backgrounds from './Backgrounds';
 
-import Button from '@components/Custom/CustomButton/Button';
+import AddButton from '@components/Custom/CustomButton/AddButton';
 import Input from '@components/Custom/CustomInput/Input';
 import Icon from '@components/Icon/Icon';
 
 import { BoardData } from '../types';
 import { useSelectionHandlers } from '@hooks/useSelectionHandlers';
 
-const CreateBoard: React.FC = () => {
+const BoardAddModal: React.FC = () => {
   const {
     register,
     handleSubmit,
@@ -37,13 +37,8 @@ const CreateBoard: React.FC = () => {
   const dispatch = useAppDispatch();
   const existingBoards = useAppSelector(selectAllBoards);
 
-  const {
-    selectedIcon,
-    selectedBackgroundName,
-    handleIconSelect,
-    handleBackgroundSelect,
-    handleInputChange,
-  } = useSelectionHandlers(setValue);
+  const { selectedIcon, selectedBackgroundName, handleIconSelect, handleBackgroundSelect, handleInputChange } =
+    useSelectionHandlers(setValue);
 
   useEffect(() => {
     dispatch(getBoardsThunk());
@@ -115,23 +110,17 @@ const CreateBoard: React.FC = () => {
 
         <Icons selectedIcon={selectedIcon} handleIconSelect={handleIconSelect} />
 
-        <Backgrounds
-          selectedBackgroundName={selectedBackgroundName}
-          handleBackgroundSelect={handleBackgroundSelect}
-        />
+        <Backgrounds selectedBackgroundName={selectedBackgroundName} handleBackgroundSelect={handleBackgroundSelect} />
 
         <div>
-          <Button
-            type="submit"
-            className="w-full py-2 px-4 border rounded-md text-white bg-indigo-600 flex items-center justify-center"
-          >
-            <Icon id="plus" width="w-6" height="h-6" className="mr-2" />
-            Create Board
-          </Button>
+          <div className="w-full py-2 px-4 border rounded-md text-black bg-lime-200 flex items-center justify-center">
+            <AddButton className="mr-2" />
+            <p>Add</p>
+          </div>
         </div>
       </form>
     </div>
   );
 };
 
-export default CreateBoard;
+export default BoardAddModal;

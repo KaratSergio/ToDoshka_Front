@@ -55,7 +55,7 @@ const EditUser: React.FC = () => {
   };
 
   return (
-    <div>
+    <div className="text-[var(--color-font)] bg-[var(--bg-sidebar)]">
       <p className="text-lg font-medium">Edit profile</p>
       <form
         className="flex flex-col justify-center items-center w-full max-w-[352px] gap-4 pt-8"
@@ -67,12 +67,7 @@ const EditUser: React.FC = () => {
           {...register('avatar')}
           error={errors.avatar?.message}
         />
-        <Input
-          type="name"
-          placeholder="Enter your name"
-          {...register('name')}
-          error={errors.name?.message}
-        />
+        <Input type="name" placeholder="Enter your name" {...register('name')} error={errors.name?.message} />
         <Input
           type="email"
           placeholder="Enter your email"
@@ -85,9 +80,13 @@ const EditUser: React.FC = () => {
           {...register('password', { required: 'Required field' })}
           error={errors.password?.message}
         />
-        <div className="flex justify-center py-4 ps-4 rounded-lg bg-lime-200 w-[352px]">
-          <button type="submit">Save</button>
-        </div>
+
+        <button
+          className="flex items-center justify-center h-[49px] rounded-lg text-black bg-lime-200 w-[352px]"
+          type="submit"
+        >
+          Save
+        </button>
       </form>
     </div>
   );

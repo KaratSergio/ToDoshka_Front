@@ -19,19 +19,10 @@ const UploaderAvatar = forwardRef<HTMLInputElement, UploaderAvatarInterface>(
     }, [selectedFile]);
 
     return (
-      <div className="w-[68px] h-[68px] border rounded-lg relative mb-4">
-        <img
-          src={newAvatar || avatarURL || foto}
-          alt="avatarURL"
-          className="w-[68px] h-[68px] object-cover rounded-lg"
-        />
-        <div className="absolute top-14 right-5 bg-lime-200 p-1 rounded-md w-6 h-6 cursor-pointer">
-          <input
-            type="file"
-            ref={ref}
-            className="absolute inset-0 opacity-0 cursor-pointer w-6 h-6"
-            {...props}
-          />
+      <div className="size-[96px] rounded-lg relative mb-4">
+        <img src={newAvatar || avatarURL || foto} alt="avatarURL" className="object-cover rounded-lg" />
+        <div className="absolute top-[84px] right-[36px] bg-lime-200 p-1 rounded-md w-6 h-6 cursor-pointer">
+          <input type="file" ref={ref} className="absolute inset-0 opacity-0 cursor-pointer w-6 h-6" {...props} />
           <Icon id="plus" width="w-4" height="h-4" />
         </div>
       </div>

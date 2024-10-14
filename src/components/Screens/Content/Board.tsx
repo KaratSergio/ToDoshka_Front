@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from '@redux/store';
 
 import { getBoardById } from '@redux/boards/thunks';
 import { selectAllBoards } from '@redux/boards/selectors';
-import Button from '../../Custom/CustomButton/Button';
+import AddButton from '../../Custom/CustomButton/AddButton';
 
 const Board: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -22,8 +22,15 @@ const Board: React.FC = () => {
 
   return (
     <div>
-      <div className="flex p-10">
-        <Button className="bg-slate-300 p-2 rounded-md">Add another column</Button>
+      <div className="flex items-center justify-center text-[var(--color-font)] w-[334px] m-5 py-[14px] bg-[var(--bg-sidebar)] rounded-md">
+        <AddButton
+          className="bg-white mr-2"
+          iconStyles={{
+            color: 'stroke-black',
+            size: 'w-4 h-4',
+          }}
+        />
+        <p>Add another column</p>
       </div>
     </div>
   );

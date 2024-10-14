@@ -1,4 +1,4 @@
-import { BoardItemProps } from './types';
+import { BoardItemProps } from '../types';
 
 const BoardItem: React.FC<BoardItemProps> = ({ board, onBoardClick }) => {
   const handleClick = () => {

@@ -1,7 +1,7 @@
 import { useAppSelector } from '@redux/store';
 import { selectModalContent } from '@redux/modal/selectors';
 
-import CreateBoard from '@components/Boards/CreateBoard/CreateBoard';
+import BoardAddModal from '@src/components/Boards/BoardAddModal/BoardAddModal';
 import EditUser from '@components/EditUser/EditUser';
 
 const ModalContent: React.FC = () => {
@@ -11,7 +11,7 @@ const ModalContent: React.FC = () => {
 
   switch (modalContent.content) {
     case 'AddNewBoard':
-      return <CreateBoard />;
+      return <BoardAddModal />;
     case 'EditUser':
       return <EditUser />;
     default:
