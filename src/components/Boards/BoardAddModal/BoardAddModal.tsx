@@ -14,10 +14,8 @@ import { addBoardThunk, getBoardsThunk } from '@redux/boards/thunks';
 
 import Icons from './Icons';
 import Backgrounds from './Backgrounds';
-
 import AddButton from '@components/Custom/CustomButton/AddButton';
 import Input from '@components/Custom/CustomInput/Input';
-import Icon from '@components/Icon/Icon';
 
 import { BoardData } from '../types';
 import { useSelectionHandlers } from '@hooks/useSelectionHandlers';
@@ -40,9 +38,9 @@ const BoardAddModal: React.FC = () => {
   const { selectedIcon, selectedBackgroundName, handleIconSelect, handleBackgroundSelect, handleInputChange } =
     useSelectionHandlers(setValue);
 
-  useEffect(() => {
-    dispatch(getBoardsThunk());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getBoardsThunk());
+  // }, [dispatch]);
 
   const handleCreateBoard = useCallback(
     (data: BoardData) => {
@@ -112,11 +110,9 @@ const BoardAddModal: React.FC = () => {
 
         <Backgrounds selectedBackgroundName={selectedBackgroundName} handleBackgroundSelect={handleBackgroundSelect} />
 
-        <div>
-          <div className="w-full py-2 px-4 border rounded-md text-black bg-lime-200 flex items-center justify-center">
-            <AddButton className="mr-2" />
-            <p>Add</p>
-          </div>
+        <div className="w-full py-2 px-4 border rounded-md text-black bg-lime-200 flex items-center justify-center">
+          <AddButton className="mr-2" />
+          <p>Add</p>
         </div>
       </form>
     </div>
